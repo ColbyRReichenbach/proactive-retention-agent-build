@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+*.egg-info/
+dist/
+build/
+
+# Virtual Environments - specify ours
+venv_api/
+venv_pipeline/
+
+# Jupyter
+.ipynb_checkpoints
+
+# Data Files - prevents accidentally committing large CSVs
+*.csv
+*.data
+
+# Model Files - never commit model binaries
+*.pkl
+*.joblib
+*.h5
+
+# API Keys & Secrets
+*.env
+.env
+credentials.*
+
+# OS
+.DS_Store
+Thumbs.db
+
