@@ -4,18 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19b3b8f7-239d-4174-a837-a4f83a8ff57e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ml_model_api/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notebooks/2-Create-Livestream-data.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/proactive-retention-agent.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/proactive-retention-agent.iml" afterDir="false" />
+    <list default="true" id="19b3b8f7-239d-4174-a837-a4f83a8ff57e" name="Changes" comment="done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ml_model_api/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/ml_model_api/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ml_model_api/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ml_model_api/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ml_model_api/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ml_model_api/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebooks/1-Data-Exploration-and-Training.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/1-Data-Exploration-and-Training.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pipeline/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pipeline/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,9 +19,24 @@
       </list>
     </option>
   </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="main" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "ColbyRReichenbach"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:ColbyRReichenbach/proactive-retention-agent-build.git",
+    "accountId": "59b4dd2c-5e9f-4d3d-afa1-22ab2ce5159d"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -40,19 +45,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data" />
@@ -103,6 +108,30 @@
       <updated>1761150926272</updated>
       <workItem from="1761150927688" duration="11000" />
     </task>
+    <task id="LOCAL-00001" summary="done">
+      <option name="closed" value="true" />
+      <created>1762456897019</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1762456897020</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="done" />
+    <option name="LAST_COMMIT_MESSAGE" value="done" />
   </component>
 </project>
