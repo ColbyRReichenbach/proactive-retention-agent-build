@@ -129,7 +129,7 @@ def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.dirname(script_dir)
     review_file_path = os.path.join(script_dir, "customer_reviews.csv")
-    telco_file_path = os.path.join(project_root, "data", "Telco_Churn.csv")
+    telco_file_path = os.path.join(project_root, "data", "Telco_customer_churn.csv")
     output_file_path = os.path.join(script_dir, "analyst_priority_list_DRY_TEST.csv")
 
     # Load Data
