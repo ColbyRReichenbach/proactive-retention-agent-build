@@ -5,12 +5,7 @@ import os
 from dotenv import load_dotenv  # To securely load our API key
 from tqdm import tqdm  # For a nice progress bar
 
-
-
-
 # Load API keys and clients
-
-
 def setup_clients():
    """
    Loads API keys from .env and configures the Gemini client.
@@ -42,12 +37,7 @@ def setup_clients():
 
    return genai.GenerativeModel('gemini-2.0-flash-lite')
 
-
-
-
 # Load and prep data
-
-
 def load_data_warehouse(path_to_telco_csv):
    """
    Loads the main Telco data and prepares it for fast lookups.
@@ -72,12 +62,7 @@ def load_data_warehouse(path_to_telco_csv):
    print(f"Data Warehouse loaded. {len(df_telco)} customers found.")
    return df_telco
 
-
-
-
 # Define api caller fxns
-
-
 def get_ml_prediction(customer_id, features):
    """
    Calls the locally running Docker API to get a churn prediction.
