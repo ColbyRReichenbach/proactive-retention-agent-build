@@ -149,7 +149,7 @@ def setup_clients():
       print(f"ERROR: Could not configure Gemini. {e}")
       return None
 
-  return genai.GenerativeModel('gemini-pro')
+  return genai.GenerativeModel('gemini-2.5-flash')
 
 # Load and prep data
 def load_data_warehouse(path_to_telco_csv):
