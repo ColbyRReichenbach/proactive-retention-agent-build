@@ -4,6 +4,7 @@ import google.generativeai as genai  # To call the Gemini API
 import os
 from dotenv import load_dotenv  # To securely load our API key
 from tqdm import tqdm  # For a nice progress bar
+import time
 
 # Load API keys and clients
 def setup_clients():
@@ -302,6 +303,7 @@ def main():
           "Review_Text": review_text
       }
       results.append(combined_data)
+      time.sleep(6.1)
 
   # Finish + save
   if not results:
