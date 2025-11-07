@@ -15,9 +15,9 @@ This project is an end-to-end automated pipeline that:
 A key part of this project was tuning the ML model. A baseline model had poor Recall (53%), meaning it missed half of all churners.
 
 | Model | Recall (Catches Churn) | Precision (Avoids False Positives) |
-| :--- | :--- | :--- |
-| **Baseline** | 53% | 62% |
-| **Final (Tuned)** | **67%** | **55%** |
+| :--- |:-----------------------|:-----------------------------------|
+| **Baseline** | 55%                    | 62%                                |
+| **Final (Tuned)** | **69%**                | **54%**                            |
 
 The final model was tuned using `scale_pos_weight` to prioritize **high Recall**. We strategically accepted more False Positives (a small cost) to minimize False Negatives (a high cost).
 
