@@ -12,7 +12,7 @@ This project is an end-to-end automated pipeline that:
 3.  **Prioritizes Action (Business Logic):** The system calculates a **Priority_Score (CLTV * Churn_Probability)** to create a "Risk-Adjusted Value" for every at-risk customer, ensuring analysts call the most valuable and most at-risk customers first.
 
 ## Model Iteration: Aligning with Business Goals
-A key part of this project was tuning the ML model. A baseline model had poor Recall (53%), meaning it missed half of all churners.
+A key part of this project was tuning the ML model. A baseline model had poor Recall (55%), meaning it missed half of all churners.
 
 | Model | Recall (Catches Churn) | Precision (Avoids False Positives) |
 | :--- |:-----------------------|:-----------------------------------|
