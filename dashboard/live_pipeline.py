@@ -18,9 +18,9 @@ def setup_gemini_client():
     
     try:
         genai.configure(api_key=api_key)
-        # Primary: 1.5 Flash (1500 requests/day) - higher quota
-        # Fallback: 2.0 Flash Lite (200 requests/day) - lower quota but backup
-        primary_model = genai.GenerativeModel('gemini-1.5-flash')
+        # Primary: 2.5 Flash-Lite (1000 requests/day) - highest daily quota on free tier
+        # Fallback: 2.0 Flash-Lite (200 requests/day, 30 RPM) - highest RPM on free tier
+        primary_model = genai.GenerativeModel('gemini-2.5-flash-lite')
         fallback_model = genai.GenerativeModel('gemini-2.0-flash-lite')
         return primary_model, fallback_model
     except Exception as e:
@@ -72,7 +72,7 @@ def get_llm_analysis(primary_model, fallback_model, review_text, max_retries=3):
     
     # Try primary model first, then fallback
     models_to_try = [
-        (primary_model, "gemini-1.5-flash"),
+        (primary_model, "gemini-2.5-flash-lite"),
     ]
     if fallback_model:
         models_to_try.append((fallback_model, "gemini-2.0-flash-lite"))
@@ -221,6 +221,28 @@ def run_live_pipeline(limit=None):
         'Streaming Movies', 'Contract', 'Paperless Billing', 'Payment Method'
     ]
     
+    # Calculate intelligent delay based on RPM limits
+    # Primary: 2.5 Flash-Lite = 15 RPM (free tier)
+    # Fallback: 2.0 Flash-Lite = 30 RPM (free tier)
+    num_reviews = len(df_reviews)
+    primary_rpm = 15  # 2.5 Flash-Lite free tier
+    fallback_rpm = 30  # 2.0 Flash-Lite free tier
+    
+    # Calculate initial delay based on primary model's limits
+    if num_reviews <= primary_rpm:
+        # Can process all within 1 minute, use minimal delay
+        delay_between_requests = 1.0
+    else:
+        # Need to space out requests to stay under 15 RPM
+        # 60 seconds / 15 requests = 4 seconds per request
+        # Add 0.5 second buffer for safety
+        delay_between_requests = (60 / primary_rpm) + 0.5  # = 4.5 seconds
+    
+    st.info(f"Processing {num_reviews} reviews with {delay_between_requests:.1f}s delay between requests to respect rate limits (15 RPM for primary model).")
+    
+    # Track current model being used for dynamic rate limiting
+    current_model_rpm = primary_rpm  # Start with primary model's limit
+    
     # Processing loop with progress and real-time LLM feed
     results = []
     progress_bar = st.progress(0)
@@ -353,8 +375,32 @@ def run_live_pipeline(limit=None):
         }
         results.append(combined_data)
         
-        # Rate limiting for LLM API - increased delay to avoid 429 errors
-        time.sleep(2)  # 2 second delay between API calls to respect rate limits
+        # Dynamic rate limiting based on model actually used
+        model_used = llm_result.get('model_used', 'gemini-2.5-flash-lite')
+        if '2.0-flash-lite' in model_used:
+            # Switched to fallback model (30 RPM), can use faster rate
+            if current_model_rpm != fallback_rpm:
+                # Just switched to fallback, recalculate delay
+                if num_reviews <= fallback_rpm:
+                    delay_between_requests = 1.0
+                else:
+                    # 60 seconds / 30 requests = 2 seconds per request
+                    # Add 0.5 second buffer for safety
+                    delay_between_requests = (60 / fallback_rpm) + 0.5  # = 2.5 seconds
+                current_model_rpm = fallback_rpm
+                st.info(f"Switched to fallback model (30 RPM). Adjusted delay to {delay_between_requests:.1f}s.")
+        else:
+            # Using primary model (15 RPM), stick with primary limits
+            if current_model_rpm != primary_rpm:
+                # Switched back to primary, recalculate delay
+                if num_reviews <= primary_rpm:
+                    delay_between_requests = 1.0
+                else:
+                    delay_between_requests = (60 / primary_rpm) + 0.5  # = 4.5 seconds
+                current_model_rpm = primary_rpm
+        
+        # Rate limiting for LLM API - dynamic delay based on model and request count
+        time.sleep(delay_between_requests)
     
     progress_bar.empty()
     status_text.empty()
