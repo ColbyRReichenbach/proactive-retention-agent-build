@@ -25,7 +25,7 @@ pipeline/pipeline/venv_pipeline/
 # BUT allow demo data for dashboard
 !dashboard/data/analyst_priority_list.csv
 !data/Telco_customer_churn.csv
-
+!pipeline/customer_reviews.csv
 # Model Files - never commit model binaries
 *.pkl
 *.joblib
