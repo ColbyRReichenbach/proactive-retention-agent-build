@@ -49,14 +49,14 @@ def create_theme_breakdown_chart(df):
             orientation="v",
             yanchor="middle",
             y=0.5,
-            xanchor="right",
-            x=0.95,
+            xanchor="left",
+            x=1.15,  # Position outside the plot area
             bgcolor="rgba(255,255,255,0.95)",
             bordercolor="rgba(0,0,0,0.3)",
             borderwidth=1,
             font=dict(size=10)
         ),
-        margin=dict(l=50, r=50, t=50, b=50)
+        margin=dict(l=50, r=150, t=50, b=50)  # Extra right margin to accommodate legend
     )
     return fig
 
