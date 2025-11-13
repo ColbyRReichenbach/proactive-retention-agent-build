@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19b3b8f7-239d-4174-a837-a4f83a8ff57e" name="Changes" comment="updated gemini model">
+    <list default="true" id="19b3b8f7-239d-4174-a837-a4f83a8ff57e" name="Changes" comment="Corrected recall">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pipeline/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +16,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Jupyter Notebook" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -26,15 +26,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "ColbyRReichenbach"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ColbyRReichenbach&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "git@github.com:ColbyRReichenbach/proactive-retention-agent-build.git",
+    "url": "https://github.com/ColbyRReichenbach/proactive-retention-agent-build.git",
     "accountId": "59b4dd2c-5e9f-4d3d-afa1-22ab2ce5159d"
   }
 }]]></component>
@@ -46,19 +46,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.dry_test.executor": "Run",
+    "Python.limited_api_test.executor": "Run",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "settings.editor.selected.configurable": "terminal",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data" />
@@ -149,7 +152,79 @@
       <option name="project" value="LOCAL" />
       <updated>1762475821429</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Implement timer bn requests so do not hit rpm">
+      <option name="closed" value="true" />
+      <created>1762478885086</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1762478885086</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Updated comments, updated model_2_pipeline to accurately save correct model for deployment.">
+      <option name="closed" value="true" />
+      <created>1762557050178</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1762557050178</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Updated comments, and added title with notebook description.">
+      <option name="closed" value="true" />
+      <created>1762557442389</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1762557442389</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Created Dry test - to test logic before integrating LLM">
+      <option name="closed" value="true" />
+      <created>1762557797576</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1762557797576</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Updated Main script">
+      <option name="closed" value="true" />
+      <created>1762557827558</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1762557827558</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Main logic with just ML component for testing">
+      <option name="closed" value="true" />
+      <created>1762558727108</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1762558727108</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Main logic limiting LLM api call to 10 rows - to ensure working without overloading api">
+      <option name="closed" value="true" />
+      <created>1762558751798</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1762558751798</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Corrected recall and precision rates">
+      <option name="closed" value="true" />
+      <created>1762559060120</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1762559060120</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Corrected recall">
+      <option name="closed" value="true" />
+      <created>1762559168004</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1762559168005</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -167,6 +242,15 @@
     <MESSAGE value="done" />
     <MESSAGE value="update README.md" />
     <MESSAGE value="updated gemini model" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated gemini model" />
+    <MESSAGE value="Implement timer bn requests so do not hit rpm" />
+    <MESSAGE value="Updated comments, updated model_2_pipeline to accurately save correct model for deployment." />
+    <MESSAGE value="Updated comments, and added title with notebook description." />
+    <MESSAGE value="Created Dry test - to test logic before integrating LLM" />
+    <MESSAGE value="Updated Main script" />
+    <MESSAGE value="Main logic with just ML component for testing" />
+    <MESSAGE value="Main logic limiting LLM api call to 10 rows - to ensure working without overloading api" />
+    <MESSAGE value="Corrected recall and precision rates" />
+    <MESSAGE value="Corrected recall" />
+    <option name="LAST_COMMIT_MESSAGE" value="Corrected recall" />
   </component>
 </project>

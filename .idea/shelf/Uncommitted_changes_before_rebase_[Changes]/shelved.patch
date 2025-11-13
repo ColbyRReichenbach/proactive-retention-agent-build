@@ -1,0 +1,52 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"19b3b8f7-239d-4174-a837-a4f83a8ff57e\" name=\"Changes\" comment=\"\">\n      <change afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/ml_model_api/.dockerignore\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/notebooks/2-Create-Livestream-data.ipynb\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/proactive-retention-agent.iml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/proactive-retention-agent.iml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/ml_model_api/Dockerfile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/ml_model_api/Dockerfile\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/ml_model_api/main.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/ml_model_api/main.py\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/ml_model_api/requirements.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/ml_model_api/requirements.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/notebooks/1-Data-Exploration-and-Training.ipynb\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/notebooks/1-Data-Exploration-and-Training.ipynb\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/pipeline/main.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pipeline/main.py\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/pipeline/requirements.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pipeline/requirements.txt\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Jupyter Notebook\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 4\n}</component>\n  <component name=\"ProjectId\" id=\"34Qfsh6e2najyF54PSkKjGNMJFd\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"ASKED_SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\n    \"Python.main.executor\": \"Run\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252\": \"true\",\n    \"RunOnceActivity.git.unshallow\": \"true\",\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\n    \"git-widget-placeholder\": \"main\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/data\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"main\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"proactive-retention-agent\" />\n      <option name=\"ENV_FILES\" value=\"\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <envs>\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\n      </envs>\n      <option name=\"SDK_HOME\" value=\"\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/ml_model_api\" />\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/ml_model_api/main.py\" />\n      <option name=\"PARAMETERS\" value=\"\" />\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\n      <option name=\"MODULE_MODE\" value=\"false\" />\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\n      <option name=\"INPUT_FILE\" value=\"\" />\n      <method v=\"2\" />\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Python.main\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-python-sdk-b3d66beaba9a-c6efb3732140-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26199.168\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"19b3b8f7-239d-4174-a837-a4f83a8ff57e\" name=\"Changes\" comment=\"\" />\n      <created>1761150926272</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1761150926272</updated>\n      <workItem from=\"1761150927688\" duration=\"11000\" />\n    </task>\n    <servers />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 2a4084532868fa3391919716a3d39b8605653a19)
++++ b/.idea/workspace.xml	(date 1762457038768)
+@@ -4,19 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="19b3b8f7-239d-4174-a837-a4f83a8ff57e" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/ml_model_api/.dockerignore" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/notebooks/2-Create-Livestream-data.ipynb" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/proactive-retention-agent.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/proactive-retention-agent.iml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/ml_model_api/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/ml_model_api/Dockerfile" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/ml_model_api/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ml_model_api/main.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/ml_model_api/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ml_model_api/requirements.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/notebooks/1-Data-Exploration-and-Training.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/1-Data-Exploration-and-Training.ipynb" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/pipeline/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/main.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/pipeline/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/requirements.txt" afterDir="false" />
+-    </list>
++    <list default="true" id="19b3b8f7-239d-4174-a837-a4f83a8ff57e" name="Changes" comment="done" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -103,6 +91,19 @@
+       <updated>1761150926272</updated>
+       <workItem from="1761150927688" duration="11000" />
+     </task>
++    <task id="LOCAL-00001" summary="done">
++      <option name="closed" value="true" />
++      <created>1762456897019</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1762456897020</updated>
++    </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="done" />
++    <option name="LAST_COMMIT_MESSAGE" value="done" />
++  </component>
+ </project>
+\ No newline at end of file
