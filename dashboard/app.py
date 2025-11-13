@@ -630,164 +630,6 @@ def render_live_pipeline():
     
     st.markdown("---")
     
-    # What-If Scenario Tester Section
-    st.subheader("What-If Scenario Tester")
-    st.markdown("""
-    Test how the ML model and LLM respond to different inputs. This demonstrates the models' behavior and sensitivity.
-    """)
-    
-    what_if_tab1, what_if_tab2 = st.tabs(["ML Feature Tester", "LLM Review Text Tester"])
-    
-    with what_if_tab1:
-        st.markdown("**Test how changing customer features affects the ML prediction:**")
-        
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            test_tenure = st.number_input("Tenure Months", min_value=0, max_value=100, value=12, key="whatif_tenure")
-            test_monthly = st.number_input("Monthly Charges ($)", min_value=0.0, max_value=200.0, value=70.0, key="whatif_monthly")
-            test_total = st.number_input("Total Charges ($)", min_value=0.0, max_value=10000.0, value=840.0, key="whatif_total")
-            test_gender = st.selectbox("Gender", ["Male", "Female"], key="whatif_gender")
-            test_senior = st.selectbox("Senior Citizen", ["Yes", "No"], key="whatif_senior")
-            test_partner = st.selectbox("Partner", ["Yes", "No"], key="whatif_partner")
-            test_dependents = st.selectbox("Dependents", ["Yes", "No"], key="whatif_dependents")
-        
-        with col2:
-            test_phone = st.selectbox("Phone Service", ["Yes", "No"], key="whatif_phone")
-            test_lines = st.selectbox("Multiple Lines", ["Yes", "No", "No phone service"], key="whatif_lines")
-            test_internet = st.selectbox("Internet Service", ["DSL", "Fiber optic", "No"], key="whatif_internet")
-            test_security = st.selectbox("Online Security", ["Yes", "No", "No internet service"], key="whatif_security")
-            test_backup = st.selectbox("Online Backup", ["Yes", "No", "No internet service"], key="whatif_backup")
-            test_device = st.selectbox("Device Protection", ["Yes", "No", "No internet service"], key="whatif_device")
-            test_tech = st.selectbox("Tech Support", ["Yes", "No", "No internet service"], key="whatif_tech")
-        
-        with col3:
-            test_tv = st.selectbox("Streaming TV", ["Yes", "No", "No internet service"], key="whatif_tv")
-            test_movies = st.selectbox("Streaming Movies", ["Yes", "No", "No internet service"], key="whatif_movies")
-            test_contract = st.selectbox("Contract", ["Month-to-month", "One year", "Two year"], key="whatif_contract")
-            test_paperless = st.selectbox("Paperless Billing", ["Yes", "No"], key="whatif_paperless")
-            test_payment = st.selectbox("Payment Method", 
-                                       ["Electronic check", "Mailed check", "Bank transfer (automatic)", "Credit card (automatic)"],
-                                       key="whatif_payment")
-        
-        if st.button("Test ML Prediction", type="primary", key="test_ml_button"):
-            if ml_api_url:
-                test_features = {
-                    "Tenure Months": test_tenure,
-                    "Monthly Charges": test_monthly,
-                    "Total Charges": test_total,
-                    "Gender": test_gender,
-                    "Senior Citizen": test_senior,
-                    "Partner": test_partner,
-                    "Dependents": test_dependents,
-                    "Phone Service": test_phone,
-                    "Multiple Lines": test_lines,
-                    "Internet Service": test_internet,
-                    "Online Security": test_security,
-                    "Online Backup": test_backup,
-                    "Device Protection": test_device,
-                    "Tech Support": test_tech,
-                    "Streaming TV": test_tv,
-                    "Streaming Movies": test_movies,
-                    "Contract": test_contract,
-                    "Paperless Billing": test_paperless,
-                    "Payment Method": test_payment
-                }
-                
-                with st.spinner("Calling ML API..."):
-                    from live_pipeline import get_ml_prediction
-                    result = get_ml_prediction("TEST_CUSTOMER", test_features, ml_api_url)
-                    
-                    if result:
-                        st.success("ML Prediction Generated!")
-                        col1, col2, col3 = st.columns(3)
-                        with col1:
-                            st.metric("Churn Probability", f"{result['churn_probability']:.1%}")
-                        with col2:
-                            st.metric("Risk Level", result['risk_level'])
-                        with col3:
-                            # Calculate what CLTV would need to be for high priority
-                            if result['churn_probability'] > 0:
-                                high_priority_cltv = 10000 / result['churn_probability']
-                                st.metric("CLTV for $10K Priority", f"${high_priority_cltv:,.0f}")
-                        
-                        st.info("""
-                        **Interpretation:** 
-                        - **Churn Probability** is the raw model output (0-100%)
-                        - **Risk Level** is categorized: High (≥75%), Medium (≥40%), Low (<40%)
-                        - Try adjusting features like Contract, Monthly Charges, or Tenure to see how predictions change
-                        """)
-                    else:
-                        st.error("Failed to get prediction. Check ML API connection.")
-            else:
-                st.error("ML API URL not configured. Cannot test.")
-    
-    with what_if_tab2:
-        st.markdown("**Test how the LLM classifies different review texts:**")
-        
-        test_review = st.text_area(
-            "Enter a customer review to classify:",
-            value="I'm really frustrated with the slow internet speeds. I've been a customer for 2 years and the service keeps getting worse. I'm considering switching to a competitor.",
-            height=100,
-            key="whatif_review"
-        )
-        
-        if st.button("Test LLM Classification", type="primary", key="test_llm_button"):
-            if google_api_key:
-                from live_pipeline import setup_gemini_client, get_llm_analysis
-                gemini_model = setup_gemini_client()
-                
-                if gemini_model:
-                    with st.spinner("Analyzing review with LLM..."):
-                        result = get_llm_analysis(gemini_model, test_review)
-                        
-                        if result:
-                            st.success("LLM Classification Complete!")
-                            
-                            col1, col2 = st.columns(2)
-                            with col1:
-                                theme_color = {
-                                    'Price': '#ff9800',
-                                    'Product/Service': '#2196f3',
-                                    'Customer Support': '#f44336',
-                                    'Competitor': '#9c27b0',
-                                    'Other': '#607d8b'
-                                }.get(result.get('theme', 'N/A'), '#666')
-                                
-                                sentiment_color = {
-                                    'Negative': '#f44336',
-                                    'Positive': '#4caf50',
-                                    'Neutral': '#ff9800'
-                                }.get(result.get('sentiment', 'N/A'), '#666')
-                                
-                                st.markdown("**Classification Results:**")
-                                st.markdown(f"**Theme:** <span style='color: {theme_color}; font-weight: 600; font-size: 1.2em;'>{result.get('theme', 'N/A')}</span>", unsafe_allow_html=True)
-                                st.markdown(f"**Sentiment:** <span style='color: {sentiment_color}; font-weight: 600; font-size: 1.2em;'>{result.get('sentiment', 'N/A')}</span>", unsafe_allow_html=True)
-                                
-                                if result.get('confidence'):
-                                    st.metric("Confidence", f"{result['confidence']:.1%}")
-                            
-                            with col2:
-                                st.markdown("**Technical Details:**")
-                                with st.expander("View Prompt"):
-                                    st.code(result.get('prompt', ''), language='text')
-                                with st.expander("View Raw Response"):
-                                    st.code(result.get('raw_response', ''), language='json')
-                            
-                            st.info("""
-                            **Tips for Testing:**
-                            - Try reviews with different themes (price complaints, service issues, competitor mentions)
-                            - Test positive, negative, and neutral sentiments
-                            - Try ambiguous reviews to see how the LLM handles uncertainty
-                            """)
-                        else:
-                            st.error("Failed to get LLM classification.")
-                else:
-                    st.error("Failed to setup Gemini client.")
-            else:
-                st.error("Google API Key not configured. Cannot test.")
-    
-    st.markdown("---")
-    
     # Show cached results indicator
     if st.session_state.live_pipeline_results is not None:
         st.info(f"Showing cached results from previous run ({st.session_state.live_pipeline_processed_count} customers processed). Click 'Run Live Pipeline' to process new data.")
@@ -875,6 +717,176 @@ def render_live_pipeline():
         )
     elif df_results is None and run_button:
         st.error("Pipeline failed. Check the error messages above.")
+    
+    # What-If Scenario Tester Section (at bottom)
+    st.markdown("---")
+    st.subheader("What-If Scenario Tester")
+    st.markdown("""
+    Test how the ML model and LLM respond to different inputs. This demonstrates the models' behavior and sensitivity.
+    """)
+    
+    what_if_tab1, what_if_tab2 = st.tabs(["ML Feature Tester", "LLM Review Text Tester"])
+    
+    with what_if_tab1:
+        st.markdown("**Test how changing key customer features affects the ML prediction:**")
+        st.caption("These 5 features are among the most important predictors of churn in the model.")
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            test_contract = st.selectbox(
+                "Contract Type", 
+                ["Month-to-month", "One year", "Two year"],
+                key="whatif_contract",
+                help="Longer contracts typically indicate lower churn risk"
+            )
+            test_tenure = st.number_input(
+                "Tenure Months", 
+                min_value=0, 
+                max_value=100, 
+                value=12,
+                key="whatif_tenure",
+                help="How long the customer has been with the company"
+            )
+            test_monthly = st.number_input(
+                "Monthly Charges ($)", 
+                min_value=0.0, 
+                max_value=200.0, 
+                value=70.0,
+                key="whatif_monthly",
+                help="Monthly service charges"
+            )
+        
+        with col2:
+            test_total = st.number_input(
+                "Total Charges ($)", 
+                min_value=0.0, 
+                max_value=10000.0, 
+                value=840.0,
+                key="whatif_total",
+                help="Total amount charged over customer lifetime"
+            )
+            test_payment = st.selectbox(
+                "Payment Method", 
+                ["Electronic check", "Mailed check", "Bank transfer (automatic)", "Credit card (automatic)"],
+                key="whatif_payment",
+                help="Payment method - electronic check often correlates with higher churn"
+            )
+        
+        if st.button("Test ML Prediction", type="primary", key="test_ml_button"):
+            if ml_api_url:
+                # Use default values for other features (typical customer profile)
+                test_features = {
+                    "Tenure Months": test_tenure,
+                    "Monthly Charges": test_monthly,
+                    "Total Charges": test_total,
+                    "Gender": "Male",  # Default
+                    "Senior Citizen": "No",  # Default
+                    "Partner": "Yes",  # Default
+                    "Dependents": "No",  # Default
+                    "Phone Service": "Yes",  # Default
+                    "Multiple Lines": "No",  # Default
+                    "Internet Service": "Fiber optic",  # Default
+                    "Online Security": "No",  # Default
+                    "Online Backup": "No",  # Default
+                    "Device Protection": "No",  # Default
+                    "Tech Support": "No",  # Default
+                    "Streaming TV": "Yes",  # Default
+                    "Streaming Movies": "Yes",  # Default
+                    "Contract": test_contract,
+                    "Paperless Billing": "Yes",  # Default
+                    "Payment Method": test_payment
+                }
+                
+                with st.spinner("Calling ML API..."):
+                    from live_pipeline import get_ml_prediction
+                    result = get_ml_prediction("TEST_CUSTOMER", test_features, ml_api_url)
+                    
+                    if result:
+                        st.success("ML Prediction Generated!")
+                        col1, col2, col3 = st.columns(3)
+                        with col1:
+                            st.metric("Churn Probability", f"{result['churn_probability']:.1%}")
+                        with col2:
+                            st.metric("Risk Level", result['risk_level'])
+                        with col3:
+                            # Calculate what CLTV would need to be for high priority
+                            if result['churn_probability'] > 0:
+                                high_priority_cltv = 10000 / result['churn_probability']
+                                st.metric("CLTV for $10K Priority", f"${high_priority_cltv:,.0f}")
+                        
+                        st.info("""
+                        **Interpretation:** 
+                        - **Churn Probability** is the raw model output (0-100%)
+                        - **Risk Level** is categorized: High (≥75%), Medium (≥40%), Low (<40%)
+                        - Try adjusting features like Contract, Tenure, or Monthly Charges to see how predictions change
+                        - Note: Other features are set to default values for this test
+                        """)
+                    else:
+                        st.error("Failed to get prediction. Check ML API connection.")
+            else:
+                st.error("ML API URL not configured. Cannot test.")
+    
+    with what_if_tab2:
+        st.markdown("**Test how the LLM classifies different review texts:**")
+        
+        test_review = st.text_area(
+            "Enter a customer review to classify:",
+            value="I'm really frustrated with the slow internet speeds. I've been a customer for 2 years and the service keeps getting worse. I'm considering switching to a competitor.",
+            height=100,
+            key="whatif_review"
+        )
+        
+        if st.button("Test LLM Classification", type="primary", key="test_llm_button"):
+            if google_api_key:
+                from live_pipeline import setup_gemini_client, get_llm_analysis
+                gemini_model = setup_gemini_client()
+                
+                if gemini_model:
+                    with st.spinner("Analyzing review with LLM..."):
+                        result = get_llm_analysis(gemini_model, test_review)
+                        
+                        if result:
+                            st.success("LLM Classification Complete!")
+                            
+                            col1, col2 = st.columns(2)
+                            with col1:
+                                theme_color = {
+                                    'Price': '#ff9800',
+                                    'Product/Service': '#2196f3',
+                                    'Customer Support': '#f44336',
+                                    'Competitor': '#9c27b0',
+                                    'Other': '#607d8b'
+                                }.get(result.get('theme', 'N/A'), '#666')
+                                
+                                sentiment_color = {
+                                    'Negative': '#f44336',
+                                    'Positive': '#4caf50',
+                                    'Neutral': '#ff9800'
+                                }.get(result.get('sentiment', 'N/A'), '#666')
+                                
+                                st.markdown("**Classification Results:**")
+                                st.markdown(f"**Theme:** <span style='color: {theme_color}; font-weight: 600; font-size: 1.2em;'>{result.get('theme', 'N/A')}</span>", unsafe_allow_html=True)
+                                st.markdown(f"**Sentiment:** <span style='color: {sentiment_color}; font-weight: 600; font-size: 1.2em;'>{result.get('sentiment', 'N/A')}</span>", unsafe_allow_html=True)
+                            
+                            with col2:
+                                st.markdown("**Technical Details:**")
+                                with st.expander("View Prompt"):
+                                    st.code(result.get('prompt', ''), language='text')
+                                with st.expander("View Raw Response"):
+                                    st.code(result.get('raw_response', ''), language='json')
+                            
+                            st.info("""
+                            **Tips for Testing:**
+                            - Try reviews with different themes (price complaints, service issues, competitor mentions)
+                            - Test positive, negative, and neutral sentiments
+                            - Try ambiguous reviews to see how the LLM handles uncertainty
+                            """)
+                        else:
+                            st.error("Failed to get LLM classification.")
+                else:
+                    st.error("Failed to setup Gemini client.")
+            else:
+                st.error("Google API Key not configured. Cannot test.")
 
 
 def render_technical_details():

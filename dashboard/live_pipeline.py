@@ -8,7 +8,6 @@ import os
 import streamlit as st
 from pathlib import Path
 import time
-import re
 
 
 def setup_gemini_client():
@@ -51,8 +50,7 @@ def get_llm_analysis(gemini_model, review_text):
             "theme": "Error", 
             "sentiment": "Error",
             "raw_response": "Model not configured",
-            "prompt": "",
-            "confidence": None
+            "prompt": ""
         }
     
     prompt = f"""
@@ -81,25 +79,11 @@ def get_llm_analysis(gemini_model, review_text):
             # If JSON parsing fails, try to extract theme and sentiment from text
             parsed = {"theme": "Parse Error", "sentiment": "Parse Error"}
         
-        # Try to extract confidence from response if available
-        confidence = None
-        if "confidence" in raw_response.lower() or "certainty" in raw_response.lower():
-            # Look for confidence indicators in the raw response
-            conf_match = re.search(r'(?:confidence|certainty)[:\s]+(\d+\.?\d*)%?', raw_response.lower())
-            if conf_match:
-                try:
-                    confidence = float(conf_match.group(1))
-                    if confidence > 1:
-                        confidence = confidence / 100  # Convert percentage to decimal
-                except:
-                    pass
-        
         return {
             "theme": parsed.get('theme', 'N/A'),
             "sentiment": parsed.get('sentiment', 'N/A'),
             "raw_response": raw_response,
-            "prompt": prompt,
-            "confidence": confidence
+            "prompt": prompt
         }
     except Exception as e:
         st.warning(f"LLM analysis failed: {e}")
@@ -107,8 +91,7 @@ def get_llm_analysis(gemini_model, review_text):
             "theme": "LLM Error", 
             "sentiment": "Error",
             "raw_response": str(e),
-            "prompt": prompt,
-            "confidence": None
+            "prompt": prompt
         }
 
 
@@ -231,8 +214,7 @@ def run_live_pipeline(limit=None):
             "churn_prob": ml_result['churn_probability'],
             "ml_features": features_for_api,  # Store features sent to ML API
             "llm_prompt": llm_result.get('prompt', ''),
-            "llm_raw_response": llm_result.get('raw_response', ''),
-            "llm_confidence": llm_result.get('confidence', None)
+            "llm_raw_response": llm_result.get('raw_response', '')
         }
         llm_analyses.append(llm_analysis_item)
         
@@ -273,10 +255,6 @@ def run_live_pipeline(limit=None):
                         
                         st.markdown(f"**Theme:** <span style='color: {theme_color}; font-weight: 600;'>{analysis['theme']}</span>", unsafe_allow_html=True)
                         st.markdown(f"**Sentiment:** <span style='color: {sentiment_color}; font-weight: 600;'>{analysis['sentiment']}</span>", unsafe_allow_html=True)
-                        
-                        # Show confidence if available
-                        if analysis.get('llm_confidence') is not None:
-                            st.metric("LLM Confidence", f"{analysis['llm_confidence']:.1%}")
                     
                     with col2:
                         st.markdown("**ML Prediction:**")
@@ -299,8 +277,6 @@ def run_live_pipeline(limit=None):
                     with tab3:
                         st.markdown("**Raw LLM Response (Before Parsing):**")
                         st.code(analysis.get('llm_raw_response', ''), language='json')
-                        if analysis.get('llm_confidence') is None:
-                            st.caption("Note: Confidence score not detected in response. Gemini may not provide explicit confidence scores.")
                     
                     st.markdown("---")
         
