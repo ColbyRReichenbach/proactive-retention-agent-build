@@ -1,0 +1,101 @@
+CustomerID,Generated_Review,Review_Category,Original_Churn_Reason
+6302-JGYRJ,I'm just not satisfied with the product overall. It doesn't meet my needs.,Service/Product,Product dissatisfaction
+2320-JRSDE,The attitude of the company and its staff is very poor. I feel like a valued customer.,Customer Support,Attitude of service provider
+2332-EFBJY,Your website is impossible to use. I can't even manage my own account without calling in.,Customer Support,Lack of self-service on Website
+1624-WOIWJ,Your equipment is outdated. I'm switching to a competitor who has better devices available.,Competitor,Competitor had better devices
+9391-EOYLI,I'm leaving because a competitor made me a much better offer. Your prices just aren't competitive.,Competitor,Competitor made better offer
+1977-STDKI,Your data caps are too restrictive. I'm moving to a competitor that offers more data for a similar price.,Competitor,Competitor offered more data
+8919-FYFQZ,Your equipment is outdated. I'm switching to a competitor who has better devices available.,Competitor,Competitor had better devices
+7893-IXHRQ,Your data caps are too restrictive. I'm moving to a competitor that offers more data for a similar price.,Competitor,Competitor offered more data
+5835-BEQEU,I'm leaving for various reasons. It's just not working out for me anymore.,Other,Don't know
+6275-YDUVO,The attitude of the company and its staff is very poor. I feel like a valued customer.,Customer Support,Attitude of service provider
+6347-DCUIK,Your website is impossible to use. I can't even manage my own account without calling in.,Customer Support,Lack of self-service on Website
+1567-DSCIC,I'm just not satisfied with the product overall. It doesn't meet my needs.,Service/Product,Product dissatisfaction
+9239-ZBZZV,Your equipment is outdated. I'm switching to a competitor who has better devices available.,Competitor,Competitor had better devices
+3838-OZURD,The download speeds I was getting are too slow. I found another provider who offers much faster internet.,Competitor,Competitor offered higher download speeds
+6029-WTIPC,Your equipment is outdated. I'm switching to a competitor who has better devices available.,Competitor,Competitor had better devices
+7927-AUXBZ,The support person I spoke with was rude and unhelpful. It was a terrible customer service experience.,Customer Support,Attitude of support person
+8020-BWHYL,Your data caps are too restrictive. I'm moving to a competitor that offers more data for a similar price.,Competitor,Competitor offered more data
+1349-WXNGG,The support person I spoke with was rude and unhelpful. It was a terrible customer service experience.,Customer Support,Attitude of support person
+8623-TMRBY,Your data caps are too restrictive. I'm moving to a competitor that offers more data for a similar price.,Competitor,Competitor offered more data
+3223-WZWJM,The download speeds I was getting are too slow. I found another provider who offers much faster internet.,Competitor,Competitor offered higher download speeds
+3992-YWPKO,The attitude of the company and its staff is very poor. I feel like a valued customer.,Customer Support,Attitude of service provider
+1024-VRZHF,The support person I spoke with was rude and unhelpful. It was a terrible customer service experience.,Customer Support,Attitude of support person
+2154-KVJFF,You don't offer the full range of services I'm looking for. I need a provider that has more options.,Service/Product,Limited range of services
+5229-PRWKT,The attitude of the company and its staff is very poor. I feel like a valued customer.,Customer Support,Attitude of service provider
+0224-HJAPT,The download speeds I was getting are too slow. I found another provider who offers much faster internet.,Competitor,Competitor offered higher download speeds
+2884-GBPFB,I'm discontinuing service because I moved to an area you don't cover. It's a shame.,Other,Moved
+7242-QZLXF,The attitude of the company and its staff is very poor. I feel like a valued customer.,Customer Support,Attitude of service provider
+8974-OVACP,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,Customer Support,N/A (Not Churned)
+3976-HXHCE,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,Customer Support,N/A (Not Churned)
+0999-QXNSA,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,Price,N/A (Not Churned)
+0442-TDYUO,The service is incredibly reliable. I never have issues with downtime or slow speeds.,Service/Product,N/A (Not Churned)
+7562-UXTPG,I'm very satisfied with the product. It works perfectly and does exactly what I need it to do.,Service/Product,N/A (Not Churned)
+8022-BECSI,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,Customer Support,N/A (Not Churned)
+7107-UBYKY,Your devices and equipment are top-notch. Way better than what the competition is offering.,Competitor,N/A (Not Churned)
+0277-BKSQP,The price is very fair for the service I receive. My monthly bill is predictable and affordable.,Price,N/A (Not Churned)
+9801-NOSHQ,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,Competitor,N/A (Not Churned)
+8329-UTMVM,The price is very fair for the service I receive. My monthly bill is predictable and affordable.,Price,N/A (Not Churned)
+5453-AXEPF,Your devices and equipment are top-notch. Way better than what the competition is offering.,Competitor,N/A (Not Churned)
+9970-QBCDA,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,Customer Support,N/A (Not Churned)
+0336-PIKEI,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,Price,N/A (Not Churned)
+3752-CQSJI,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,Price,N/A (Not Churned)
+1746-TGTWV,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,Price,N/A (Not Churned)
+5124-EOGYE,The service is incredibly reliable. I never have issues with downtime or slow speeds.,Service/Product,N/A (Not Churned)
+3078-ZKNTS,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,Customer Support,N/A (Not Churned)
+6614-YWYSC,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,Customer Support,N/A (Not Churned)
+7426-GSWPO,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,Competitor,N/A (Not Churned)
+3082-WQRVY,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,Customer Support,N/A (Not Churned)
+4573-JKNAE,The service is incredibly reliable. I never have issues with downtime or slow speeds.,Service/Product,N/A (Not Churned)
+4079-WWQQQ,I'm very satisfied with the product. It works perfectly and does exactly what I need it to do.,Service/Product,N/A (Not Churned)
+4369-NYSCF,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,Price,N/A (Not Churned)
+2274-XUATA,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,Price,N/A (Not Churned)
+5016-LIPDW,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,Competitor,N/A (Not Churned)
+2990-OGYTD,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,Customer Support,N/A (Not Churned)
+1488-PBLJN,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,Price,N/A (Not Churned)
+5197-PYEPU,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,Competitor,N/A (Not Churned)
+6103-LIANB,I'm very satisfied with the product. It works perfectly and does exactly what I need it to do.,Service/Product,N/A (Not Churned)
+0310-SUCIN,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,Competitor,N/A (Not Churned)
+6131-FOYAS,The service is incredibly reliable. I never have issues with downtime or slow speeds.,Service/Product,N/A (Not Churned)
+1162-ECVII,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,Competitor,N/A (Not Churned)
+0447-RXSGD,The website is so easy to use. I can manage my account and find information without any hassle.,Customer Support,N/A (Not Churned)
+2688-BHGOG,The service is incredibly reliable. I never have issues with downtime or slow speeds.,Service/Product,N/A (Not Churned)
+0014-BMAQU,The website is so easy to use. I can manage my account and find information without any hassle.,Customer Support,N/A (Not Churned)
+8049-WJCLQ,The service is incredibly reliable. I never have issues with downtime or slow speeds.,Service/Product,N/A (Not Churned)
+7242-EDTYC,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,Price,N/A (Not Churned)
+3580-HYCSP,I'm very satisfied with the product. It works perfectly and does exactly what I need it to do.,Service/Product,N/A (Not Churned)
+8958-JPTRR,Your devices and equipment are top-notch. Way better than what the competition is offering.,Competitor,N/A (Not Churned)
+1304-SEGFY,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,Price,N/A (Not Churned)
+4712-UYOOI,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,Competitor,N/A (Not Churned)
+4312-GVYNH,Your devices and equipment are top-notch. Way better than what the competition is offering.,Competitor,N/A (Not Churned)
+1245-HARPS,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,Customer Support,N/A (Not Churned)
+9251-AWQGT,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,Competitor,N/A (Not Churned)
+0098-BOWSO,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,Competitor,N/A (Not Churned)
+7801-CEDNV,The service is incredibly reliable. I never have issues with downtime or slow speeds.,Service/Product,N/A (Not Churned)
+1548-ARAGG,The website is so easy to use. I can manage my account and find information without any hassle.,Customer Support,N/A (Not Churned)
+7524-VRLPL,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,Price,N/A (Not Churned)
+7601-WFVZV,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,Customer Support,N/A (Not Churned)
+0953-LGOVU,I'm very satisfied with the product. It works perfectly and does exactly what I need it to do.,Service/Product,N/A (Not Churned)
+1208-NBVFH,Your devices and equipment are top-notch. Way better than what the competition is offering.,Competitor,N/A (Not Churned)
+4439-YRNVD,The price is very fair for the service I receive. My monthly bill is predictable and affordable.,Price,N/A (Not Churned)
+6339-RZCBJ,The service is incredibly reliable. I never have issues with downtime or slow speeds.,Service/Product,N/A (Not Churned)
+2519-ERQOJ,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,Price,N/A (Not Churned)
+5151-HQRDG,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,Customer Support,N/A (Not Churned)
+4304-XUMGI,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,Competitor,N/A (Not Churned)
+8332-OSJDW,The website is so easy to use. I can manage my account and find information without any hassle.,Customer Support,N/A (Not Churned)
+2267-FPIMA,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,Competitor,N/A (Not Churned)
+9552-TGUZV,Your devices and equipment are top-notch. Way better than what the competition is offering.,Competitor,N/A (Not Churned)
+9578-FOMUK,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,Competitor,N/A (Not Churned)
+8184-WMOFI,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,Competitor,N/A (Not Churned)
+7110-BDTWG,The price is very fair for the service I receive. My monthly bill is predictable and affordable.,Price,N/A (Not Churned)
+6439-LAJXL,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,Price,N/A (Not Churned)
+2284-VFLKH,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,Customer Support,N/A (Not Churned)
+5451-YHYPW,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,Customer Support,N/A (Not Churned)
+3279-DYZQM,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,Customer Support,N/A (Not Churned)
+8486-AYEQH,Your devices and equipment are top-notch. Way better than what the competition is offering.,Competitor,N/A (Not Churned)
+4872-VXRIL,Your devices and equipment are top-notch. Way better than what the competition is offering.,Competitor,N/A (Not Churned)
+0292-WEGCH,Your devices and equipment are top-notch. Way better than what the competition is offering.,Competitor,N/A (Not Churned)
+7349-ALMUX,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,Competitor,N/A (Not Churned)
+3688-FTHLT,Your devices and equipment are top-notch. Way better than what the competition is offering.,Competitor,N/A (Not Churned)
+6176-YJWAS,I'm very satisfied with the product. It works perfectly and does exactly what I need it to do.,Service/Product,N/A (Not Churned)
+3352-RICWQ,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,Price,N/A (Not Churned)
