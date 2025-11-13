@@ -24,6 +24,7 @@ pipeline/pipeline/venv_pipeline/
 *.data
 # BUT allow demo data for dashboard
 !dashboard/data/analyst_priority_list.csv
+!data/Telco_customer_churn.csv
 
 # Model Files - never commit model binaries
 *.pkl
