@@ -29,7 +29,8 @@ pipeline/pipeline/venv_pipeline/
 *.pkl
 *.joblib
 *.h5
- !ml_model_api/churn_model_v2.pkl  # Uncomment if you need to commit model
+# BUT allow model file for deployment
+!ml_model_api/churn_model_v2.pkl
 
 # API Keys & Secrets
 *.env
