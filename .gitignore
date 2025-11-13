@@ -13,6 +13,8 @@ build/
 # Virtual Environments - specify ours
 venv_api/
 venv_pipeline/
+pipeline/venv_pipeline/
+pipeline/pipeline/venv_pipeline/
 
 # Jupyter
 .ipynb_checkpoints
@@ -20,18 +22,34 @@ venv_pipeline/
 # Data Files - prevents accidentally committing large CSVs
 *.csv
 *.data
+# BUT allow demo data for dashboard
+!dashboard/data/analyst_priority_list.csv
 
 # Model Files - never commit model binaries
 *.pkl
 *.joblib
 *.h5
+ !ml_model_api/churn_model_v2.pkl  # Uncomment if you need to commit model
 
 # API Keys & Secrets
 *.env
 .env
+.env.*
+!.env.example
 credentials.*
+*_secret*
+*_key*
+*_password*
 
 # OS
 .DS_Store
 Thumbs.db
 
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log

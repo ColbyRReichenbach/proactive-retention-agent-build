@@ -10,7 +10,7 @@ app = FastAPI(title="Churn Model API", version="1.0")
 
 # Load Model
 api_dir = os.path.dirname(os.path.abspath(__file__))
-model_path = os.path.join(api_dir, 'churn_model_v1.pkl')
+model_path = os.path.join(api_dir, 'churn_model_v2.pkl')
 model = None
 
 

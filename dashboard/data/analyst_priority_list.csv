@@ -1,0 +1,101 @@
+CustomerID,ML_Risk_Level,Churn_Probability,LLM_Theme,LLM_Sentiment,CLTV,Review_Text,Priority_Score
+3223-WZWJM,High,0.8578065037727356,Product/Service,Negative,5869,The download speeds I was getting are too slow. I found another provider who offers much faster internet.,5034.466370642185
+8623-TMRBY,High,0.7788985967636108,Competitor,Negative,6245,Your data caps are too restrictive. I'm moving to a competitor that offers more data for a similar price.,4864.22173678875
+3838-OZURD,High,0.8332927227020264,Product/Service,Negative,5723,The download speeds I was getting are too slow. I found another provider who offers much faster internet.,4768.934252023697
+2884-GBPFB,High,0.8622835278511047,Product/Service,Negative,5413,I'm discontinuing service because I moved to an area you don't cover. It's a shame.,4667.54073625803
+7242-QZLXF,High,0.8133111000061035,Customer Support,Negative,5421,The attitude of the company and its staff is very poor. I feel like a valued customer.,4408.959473133087
+9391-EOYLI,High,0.7948495149612427,Price,Negative,5374,I'm leaving because a competitor made me a much better offer. Your prices just aren't competitive.,4271.521293401718
+8919-FYFQZ,High,0.881503164768219,Product/Service,Negative,4829,Your equipment is outdated. I'm switching to a competitor who has better devices available.,4256.7787826657295
+1624-WOIWJ,Medium,0.7277465462684631,Competitor,Negative,5686,Your equipment is outdated. I'm switching to a competitor who has better devices available.,4137.966862082481
+3992-YWPKO,Medium,0.7038490176200867,Customer Support,Negative,5750,The attitude of the company and its staff is very poor. I feel like a valued customer.,4047.1318513154984
+2320-JRSDE,High,0.8094242811203003,Customer Support,Negative,4633,The attitude of the company and its staff is very poor. I feel like a valued customer.,3750.0626944303513
+5835-BEQEU,High,0.8354388475418091,Other,Negative,4428,I'm leaving for various reasons. It's just not working out for me anymore.,3699.3232169151306
+1977-STDKI,High,0.8476434946060181,Price,Negative,4116,Your data caps are too restrictive. I'm moving to a competitor that offers more data for a similar price.,3488.9006237983704
+8020-BWHYL,Medium,0.7329667210578918,Competitor,Negative,4526,Your data caps are too restrictive. I'm moving to a competitor that offers more data for a similar price.,3317.4073795080185
+6029-WTIPC,Medium,0.7485141158103943,Competitor,Negative,4424,Your equipment is outdated. I'm switching to a competitor who has better devices available.,3311.4264483451843
+6347-DCUIK,Medium,0.7399600744247437,Product/Service,Negative,4231,Your website is impossible to use. I can't even manage my own account without calling in.,3130.7710748910904
+5229-PRWKT,Medium,0.687505841255188,Customer Support,Negative,4193,The attitude of the company and its staff is very poor. I feel like a valued customer.,2882.7119923830032
+2688-BHGOG,Medium,0.4832564890384674,Product/Service,Positive,5811,The service is incredibly reliable. I never have issues with downtime or slow speeds.,2808.203457802534
+6275-YDUVO,High,0.9437907934188843,Customer Support,Negative,2969,The attitude of the company and its staff is very poor. I feel like a valued customer.,2802.1148656606674
+9552-TGUZV,Medium,0.5100744962692261,Product/Service,Positive,5413,Your devices and equipment are top-notch. Way better than what the competition is offering.,2761.0332483053207
+7927-AUXBZ,Medium,0.6044614911079407,Customer Support,Negative,4417,The support person I spoke with was rude and unhelpful. It was a terrible customer service experience.,2669.906406223774
+2154-KVJFF,High,0.8670478463172913,Product/Service,Negative,2813,You don't offer the full range of services I'm looking for. I need a provider that has more options.,2439.0055916905403
+1567-DSCIC,High,0.8854905366897583,Product/Service,Negative,2632,I'm just not satisfied with the product overall. It doesn't meet my needs.,2330.611092567444
+0224-HJAPT,Medium,0.7232515811920166,Product/Service,Negative,2857,The download speeds I was getting are too slow. I found another provider who offers much faster internet.,2066.3297674655914
+1746-TGTWV,Medium,0.5223444700241089,Price,Positive,3514,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,1835.5184676647186
+1024-VRZHF,High,0.8832375407218933,Customer Support,Negative,2044,The support person I spoke with was rude and unhelpful. It was a terrible customer service experience.,1805.33753323555
+2267-FPIMA,Low,0.31338822841644287,Price,Positive,5548,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,1738.677891254425
+0447-RXSGD,Low,0.3265383541584015,Product/Service,Positive,5207,The website is so easy to use. I can manage my account and find information without any hassle.,1700.2852101027966
+9239-ZBZZV,Medium,0.7457945942878723,Product/Service,Negative,2240,Your equipment is outdated. I'm switching to a competitor who has better devices available.,1670.579891204834
+1349-WXNGG,Low,0.3464367985725403,Customer Support,Negative,4710,The support person I spoke with was rude and unhelpful. It was a terrible customer service experience.,1631.7173212766647
+7110-BDTWG,Low,0.24768738448619843,Price,Positive,6302,The price is very fair for the service I receive. My monthly bill is predictable and affordable.,1560.9258970320225
+8974-OVACP,Medium,0.4764239490032196,Customer Support,Positive,3167,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,1508.8346464931965
+7601-WFVZV,Low,0.38167262077331543,Customer Support,Positive,3718,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,1419.0588040351868
+2332-EFBJY,Low,0.391544371843338,Product/Service,Negative,3438,Your website is impossible to use. I can't even manage my own account without calling in.,1346.129550397396
+6302-JGYRJ,Medium,0.4566630423069,Product/Service,Negative,2872,I'm just not satisfied with the product overall. It doesn't meet my needs.,1311.5362575054169
+3688-FTHLT,Low,0.3972957134246826,Product/Service,Positive,3214,Your devices and equipment are top-notch. Way better than what the competition is offering.,1276.90842294693
+5453-AXEPF,Low,0.3537995219230652,Product/Service,Positive,3591,Your devices and equipment are top-notch. Way better than what the competition is offering.,1270.494083225727
+1548-ARAGG,Low,0.21175538003444672,Product/Service,Positive,5605,The website is so easy to use. I can manage my account and find information without any hassle.,1186.8889050930738
+7562-UXTPG,Low,0.3667539656162262,Product/Service,Positive,2992,I'm very satisfied with the product. It works perfectly and does exactly what I need it to do.,1097.3278651237488
+7893-IXHRQ,Low,0.17896494269371033,Competitor,Negative,5636,Your data caps are too restrictive. I'm moving to a competitor that offers more data for a similar price.,1008.6464170217514
+0277-BKSQP,Low,0.1639808863401413,Price,Positive,4854,The price is very fair for the service I receive. My monthly bill is predictable and affordable.,795.9632222950459
+1304-SEGFY,Low,0.16543719172477722,Price,Positive,4508,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,745.7908602952957
+4439-YRNVD,Low,0.15374043583869934,Price,Positive,4571,The price is very fair for the service I receive. My monthly bill is predictable and affordable.,702.7475322186947
+8486-AYEQH,Low,0.264007568359375,Product/Service,Positive,2421,Your devices and equipment are top-notch. Way better than what the competition is offering.,639.1623229980469
+9970-QBCDA,Low,0.11511582136154175,Customer Support,Positive,5387,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,620.1289296746254
+0999-QXNSA,Low,0.1279289275407791,Price,Positive,3779,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,483.44341717660427
+9578-FOMUK,Low,0.1116243377327919,Price,Positive,3965,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,442.5904991105199
+8958-JPTRR,Low,0.08614344149827957,Product/Service,Positive,5052,Your devices and equipment are top-notch. Way better than what the competition is offering.,435.1966664493084
+8049-WJCLQ,Low,0.06834518909454346,Product/Service,Positive,5318,The service is incredibly reliable. I never have issues with downtime or slow speeds.,363.4597156047821
+7524-VRLPL,Low,0.07876995205879211,Price,Positive,4204,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,331.14887845516205
+4712-UYOOI,Low,0.09289553016424179,Price,Positive,3402,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,316.0305936187506
+8184-WMOFI,Low,0.05517735332250595,Price,Positive,5327,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,293.9297611489892
+0098-BOWSO,Low,0.067948117852211,Price,Positive,3792,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,257.6592628955841
+1208-NBVFH,Low,0.07297644764184952,Competitor,Positive,3235,Your devices and equipment are top-notch. Way better than what the competition is offering.,236.0788081213832
+5151-HQRDG,Low,0.057669688016176224,Customer Support,Positive,3839,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,221.39393229410052
+2284-VFLKH,Low,0.03921327367424965,Customer Support,Positive,4995,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,195.870302002877
+6439-LAJXL,Low,0.07560866326093674,Price,Positive,2452,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,185.39244231581688
+8329-UTMVM,Low,0.053858622908592224,Price,Positive,3104,The price is very fair for the service I receive. My monthly bill is predictable and affordable.,167.17716550827026
+2519-ERQOJ,Low,0.03008808009326458,Price,Positive,5322,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,160.1287622563541
+7426-GSWPO,Low,0.030369464308023453,Price,Positive,5125,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,155.6435045786202
+4369-NYSCF,Low,0.021724987775087357,Price,Positive,6487,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,140.92999569699168
+0014-BMAQU,Low,0.026593053713440895,Product/Service,Positive,4604,The website is so easy to use. I can manage my account and find information without any hassle.,122.43441929668188
+0953-LGOVU,Low,0.0439579002559185,Product/Service,Positive,2562,I'm very satisfied with the product. It works perfectly and does exactly what I need it to do.,112.6201404556632
+3752-CQSJI,Low,0.015963174402713776,Price,Positive,5417,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,86.47251573950052
+6614-YWYSC,Low,0.012065875343978405,Customer Support,Positive,6421,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,77.47498558368534
+6131-FOYAS,Low,0.027316875755786896,Product/Service,Positive,2187,The service is incredibly reliable. I never have issues with downtime or slow speeds.,59.74200727790594
+7349-ALMUX,Low,0.018104607239365578,Price,Positive,3183,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,57.626964842900634
+8332-OSJDW,Low,0.017323968932032585,Product/Service,Positive,3277,The website is so easy to use. I can manage my account and find information without any hassle.,56.77064619027078
+4312-GVYNH,Low,0.007209484465420246,Product/Service,Positive,5460,Your devices and equipment are top-notch. Way better than what the competition is offering.,39.363785181194544
+5451-YHYPW,Low,0.0062821367755532265,Customer Support,Positive,6205,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,38.98065869230777
+1162-ECVII,Low,0.009008084423840046,Price,Positive,4265,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,38.419480067677796
+7107-UBYKY,Low,0.008970274589955807,Product/Service,Positive,4194,Your devices and equipment are top-notch. Way better than what the competition is offering.,37.62133163027465
+7801-CEDNV,Low,0.010334715247154236,Product/Service,Positive,3560,The service is incredibly reliable. I never have issues with downtime or slow speeds.,36.79158627986908
+0310-SUCIN,Low,0.005984486546367407,Price,Positive,5643,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,33.77045758115128
+5016-LIPDW,Low,0.006446896120905876,Price,Positive,4194,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,27.038282331079245
+2990-OGYTD,Low,0.005134761333465576,Customer Support,Positive,5037,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,25.863792836666107
+0292-WEGCH,Low,0.0036327869165688753,Product/Service,Positive,6275,Your devices and equipment are top-notch. Way better than what the competition is offering.,22.795737901469693
+3078-ZKNTS,Low,0.005196785554289818,Customer Support,Positive,4314,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,22.418932881206274
+3082-WQRVY,Low,0.006386250723153353,Customer Support,Positive,2962,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,18.91607464198023
+1245-HARPS,Low,0.0029739493038505316,Customer Support,Positive,4556,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,13.549313028343022
+6339-RZCBJ,Low,0.0032891035079956055,Product/Service,Positive,4063,The service is incredibly reliable. I never have issues with downtime or slow speeds.,13.363627552986145
+0336-PIKEI,Low,0.0022189822047948837,Price,Positive,5590,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,12.4041105248034
+4872-VXRIL,Low,0.0023104313295334578,Product/Service,Positive,4656,Your devices and equipment are top-notch. Way better than what the competition is offering.,10.75736827030778
+2274-XUATA,Low,0.0015452926745638251,Price,Positive,4933,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,7.622928763623349
+3352-RICWQ,Low,0.002777123125270009,Price,Positive,2427,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,6.740077825030312
+6103-LIANB,Low,0.0013248369796201587,Product/Service,Positive,4583,I'm very satisfied with the product. It works perfectly and does exactly what I need it to do.,6.071727877599187
+1488-PBLJN,Low,0.0014912892365828156,Price,Positive,4055,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,6.0471778543433174
+6176-YJWAS,Low,0.001330968807451427,Product/Service,Positive,4256,I'm very satisfied with the product. It works perfectly and does exactly what I need it to do.,5.664603244513273
+5197-PYEPU,Low,0.0009072639513760805,Price,Positive,5643,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,5.119690477615222
+0442-TDYUO,Low,0.0015658388147130609,Product/Service,Positive,2964,The service is incredibly reliable. I never have issues with downtime or slow speeds.,4.641146246809512
+4573-JKNAE,Low,0.0017899471567943692,Product/Service,Positive,2558,The service is incredibly reliable. I never have issues with downtime or slow speeds.,4.5786848270799965
+8022-BECSI,Low,0.0017964979633688927,Customer Support,Positive,2203,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,3.9576850133016706
+4079-WWQQQ,Low,0.0008455136558040977,Product/Service,Positive,4266,I'm very satisfied with the product. It works perfectly and does exactly what I need it to do.,3.6069612556602806
+5124-EOGYE,Low,0.0012832565698772669,Product/Service,Positive,2598,The service is incredibly reliable. I never have issues with downtime or slow speeds.,3.3339005685411394
+4304-XUMGI,Low,0.0004586949071381241,Competitor,Positive,6084,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,2.790699815028347
+3580-HYCSP,Low,0.0003632938314694911,Product/Service,Positive,5780,I'm very satisfied with the product. It works perfectly and does exactly what I need it to do.,2.0998383458936587
+3976-HXHCE,Low,0.0002531064092181623,Customer Support,Positive,4722,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,1.1951684643281624
+7242-EDTYC,Low,0.00016864246572367847,Price,Positive,5860,I get great speeds for what I pay. Definitely feel like I'm getting a good deal.,0.9882448491407558
+9801-NOSHQ,Low,0.00022466066002380103,Price,Positive,3058,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,0.6870122983527835
+3279-DYZQM,Low,2.8193931939313188e-05,Customer Support,Positive,5497,I had to call support once and they were fantastic. The representative was knowledgeable and solved my issue quickly.,0.1549820438704046
+9251-AWQGT,Low,4.546068885247223e-05,Price,Positive,2608,I've shopped around and you still have the best offers. Really happy with the value I'm getting.,0.11856147652724758
