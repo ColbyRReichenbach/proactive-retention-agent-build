@@ -94,14 +94,16 @@ def create_cltv_vs_churn_scatter(df):
         plot_bgcolor='#f5f5f5',
         paper_bgcolor='#f5f5f5',
         legend=dict(
-            orientation="v",
-            yanchor="top",
-            y=1,
-            xanchor="left",
-            x=1.02,
-            bgcolor="rgba(255,255,255,0.8)"
+            orientation="h",
+            yanchor="bottom",
+            y=-0.25,
+            xanchor="center",
+            x=0.5,
+            bgcolor="rgba(255,255,255,0.9)",
+            bordercolor="rgba(0,0,0,0.2)",
+            borderwidth=1
         ),
-        margin=dict(r=120)  # Extra margin for legend
+        margin=dict(b=80, t=50)  # Extra bottom margin for horizontal legend
     )
     return fig
 
@@ -122,14 +124,16 @@ def create_priority_score_distribution(df):
         plot_bgcolor='#f5f5f5',
         paper_bgcolor='#f5f5f5',
         legend=dict(
-            orientation="v",
-            yanchor="top",
-            y=1,
-            xanchor="left",
-            x=1.02,
-            bgcolor="rgba(255,255,255,0.8)"
+            orientation="h",
+            yanchor="bottom",
+            y=-0.25,
+            xanchor="center",
+            x=0.5,
+            bgcolor="rgba(255,255,255,0.9)",
+            bordercolor="rgba(0,0,0,0.2)",
+            borderwidth=1
         ),
-        margin=dict(r=120)  # Extra margin for legend
+        margin=dict(b=80, t=50)  # Extra bottom margin for horizontal legend
     )
     return fig
 
@@ -232,14 +236,16 @@ def create_risk_value_quadrant(df):
         plot_bgcolor='#f5f5f5',
         paper_bgcolor='#f5f5f5',
         legend=dict(
-            orientation="v",
-            yanchor="top",
-            y=1,
-            xanchor="left",
-            x=1.02,
-            bgcolor="rgba(255,255,255,0.8)"
+            orientation="h",
+            yanchor="bottom",
+            y=-0.25,
+            xanchor="center",
+            x=0.5,
+            bgcolor="rgba(255,255,255,0.9)",
+            bordercolor="rgba(0,0,0,0.2)",
+            borderwidth=1
         ),
-        margin=dict(r=120)  # Extra margin for legend
+        margin=dict(b=80, t=50)  # Extra bottom margin for horizontal legend
     )
     return fig
 
@@ -344,11 +350,14 @@ def create_sentiment_severity_analysis(df):
         legend=dict(
             orientation="h",
             yanchor="bottom",
-            y=1.02,
-            xanchor="right",
-            x=1
+            y=-0.25,
+            xanchor="center",
+            x=0.5,
+            bgcolor="rgba(255,255,255,0.9)",
+            bordercolor="rgba(0,0,0,0.2)",
+            borderwidth=1
         ),
-        margin=dict(b=100, t=80)  # Extra margins
+        margin=dict(b=80, t=50)  # Extra bottom margin for horizontal legend
     )
     return fig
 
@@ -471,14 +480,16 @@ def create_risk_concentration_analysis(df):
         plot_bgcolor='#f5f5f5',
         paper_bgcolor='#f5f5f5',
         legend=dict(
-            orientation="v",
-            yanchor="top",
-            y=1,
-            xanchor="left",
-            x=1.02,
-            bgcolor="rgba(255,255,255,0.8)"
+            orientation="h",
+            yanchor="bottom",
+            y=-0.25,
+            xanchor="center",
+            x=0.5,
+            bgcolor="rgba(255,255,255,0.9)",
+            bordercolor="rgba(0,0,0,0.2)",
+            borderwidth=1
         ),
-        margin=dict(r=120, b=100)  # Extra margins for legend and x-axis
+        margin=dict(b=80, t=50)  # Extra bottom margin for horizontal legend
     )
     return fig
 
