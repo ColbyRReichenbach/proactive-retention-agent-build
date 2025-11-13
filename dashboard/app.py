@@ -18,7 +18,14 @@ from analytics import (
     create_priority_score_distribution,
     create_theme_sentiment_heatmap,
     create_avg_churn_by_theme,
-    create_top_customers_table
+    create_top_customers_table,
+    # Live pipeline specific analytics
+    create_risk_value_quadrant,
+    create_theme_impact_analysis,
+    create_sentiment_severity_analysis,
+    create_action_urgency_matrix,
+    create_cltv_at_risk_by_theme,
+    create_risk_concentration_analysis
 )
 from live_pipeline import run_live_pipeline
 
@@ -592,6 +599,12 @@ def render_live_pipeline():
     """Render the live pipeline execution page"""
     st.header("Live Pipeline Execution")
     
+    # Initialize session state for caching results
+    if 'live_pipeline_results' not in st.session_state:
+        st.session_state.live_pipeline_results = None
+    if 'live_pipeline_processed_count' not in st.session_state:
+        st.session_state.live_pipeline_processed_count = 0
+    
     # Check environment variables
     ml_api_url = os.environ.get("ML_API_URL")
     google_api_key = os.environ.get("GOOGLE_API_KEY")
@@ -624,6 +637,16 @@ def render_live_pipeline():
     
     st.markdown("---")
     
+    # Show cached results indicator
+    if st.session_state.live_pipeline_results is not None:
+        st.info(f"Showing cached results from previous run ({st.session_state.live_pipeline_processed_count} customers processed). Click 'Run Live Pipeline' to process new data.")
+        clear_cache = st.button("Clear Cached Results", type="secondary")
+        if clear_cache:
+            st.session_state.live_pipeline_results = None
+            st.session_state.live_pipeline_processed_count = 0
+            st.rerun()
+        st.markdown("---")
+    
     # Pipeline controls
     st.subheader("Run Pipeline")
     
@@ -641,6 +664,9 @@ def render_live_pipeline():
         st.markdown("<br>", unsafe_allow_html=True)
         run_button = st.button("Run Live Pipeline", type="primary", use_container_width=True)
     
+    # Get results (either from cache or new run)
+    df_results = st.session_state.live_pipeline_results
+    
     if run_button:
         with st.container():
             st.markdown("### Processing Pipeline")
@@ -648,48 +674,73 @@ def render_live_pipeline():
             # Run pipeline
             df_results = run_live_pipeline(limit=limit if limit else None)
             
+            # Cache results
             if df_results is not None and len(df_results) > 0:
-                st.success(f"Pipeline completed! Processed {len(df_results)} customers.")
-                
-                # Show metrics
-                st.subheader("Results Summary")
-                col1, col2, col3, col4 = st.columns(4)
-                
-                with col1:
-                    st.metric("Total Processed", len(df_results))
-                with col2:
-                    high_risk = len(df_results[df_results['ML_Risk_Level'] == 'High'])
-                    st.metric("High Risk", high_risk)
-                with col3:
-                    total_cltv = df_results['CLTV'].sum()
-                    st.metric("Total CLTV at Risk", format_currency(total_cltv))
-                with col4:
-                    avg_prob = df_results['Churn_Probability'].mean()
-                    st.metric("Avg Churn Prob", f"{avg_prob:.1%}")
-                
-                # Show top customers
-                st.subheader("Top Priority Customers")
-                top_customers = create_top_customers_table(df_results, n=20)
-                st.dataframe(top_customers, use_container_width=True, hide_index=True)
-                
-                # Show charts
-                st.subheader("Analytics")
-                col1, col2 = st.columns(2)
-                with col1:
-                    st.plotly_chart(create_risk_distribution_chart(df_results), use_container_width=True)
-                with col2:
-                    st.plotly_chart(create_theme_breakdown_chart(df_results), use_container_width=True)
-                
-                # Download results
-                csv = df_results.to_csv(index=False)
-                st.download_button(
-                    label="Download Results as CSV",
-                    data=csv,
-                    file_name=f"live_pipeline_results_{pd.Timestamp.now().strftime('%Y%m%d_%H%M%S')}.csv",
-                    mime="text/csv"
-                )
-            elif df_results is None:
-                st.error("Pipeline failed. Check the error messages above.")
+                st.session_state.live_pipeline_results = df_results
+                st.session_state.live_pipeline_processed_count = len(df_results)
+    
+    # Display results (from cache or new run)
+    if df_results is not None and len(df_results) > 0:
+        st.success(f"Pipeline completed! Processed {len(df_results)} customers.")
+        
+        # Show metrics
+        st.subheader("Results Summary")
+        col1, col2, col3, col4 = st.columns(4)
+        
+        with col1:
+            st.metric("Total Processed", len(df_results))
+        with col2:
+            high_risk = len(df_results[df_results['ML_Risk_Level'] == 'High'])
+            st.metric("High Risk", high_risk)
+        with col3:
+            total_cltv = df_results['CLTV'].sum()
+            st.metric("Total CLTV at Risk", format_currency(total_cltv))
+        with col4:
+            avg_prob = df_results['Churn_Probability'].mean()
+            st.metric("Avg Churn Prob", f"{avg_prob:.1%}")
+        
+        # Show top customers
+        st.subheader("Top Priority Customers")
+        top_customers = create_top_customers_table(df_results, n=20)
+        st.dataframe(top_customers, use_container_width=True, hide_index=True)
+        
+        # In-depth Analytics (different from demo)
+        st.subheader("In-Depth Analytics")
+        st.markdown("""
+        **Strategic Insights:** These analytics provide deeper business intelligence for decision-making.
+        """)
+        
+        # Row 1: Risk-Value Quadrant and Action Urgency
+        col1, col2 = st.columns(2)
+        with col1:
+            st.plotly_chart(create_risk_value_quadrant(df_results), use_container_width=True)
+        with col2:
+            st.plotly_chart(create_action_urgency_matrix(df_results), use_container_width=True)
+        
+        # Row 2: Theme Impact Analysis (4-panel)
+        st.plotly_chart(create_theme_impact_analysis(df_results), use_container_width=True)
+        
+        # Row 3: CLTV at Risk and Sentiment Severity
+        col1, col2 = st.columns(2)
+        with col1:
+            st.plotly_chart(create_cltv_at_risk_by_theme(df_results), use_container_width=True)
+        with col2:
+            st.plotly_chart(create_sentiment_severity_analysis(df_results), use_container_width=True)
+        
+        # Row 4: Risk Concentration
+        st.plotly_chart(create_risk_concentration_analysis(df_results), use_container_width=True)
+        
+        # Download results
+        st.markdown("---")
+        csv = df_results.to_csv(index=False)
+        st.download_button(
+            label="Download Results as CSV",
+            data=csv,
+            file_name=f"live_pipeline_results_{pd.Timestamp.now().strftime('%Y%m%d_%H%M%S')}.csv",
+            mime="text/csv"
+        )
+    elif df_results is None and run_button:
+        st.error("Pipeline failed. Check the error messages above.")
 
 
 def render_technical_details():
