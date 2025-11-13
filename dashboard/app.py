@@ -18,14 +18,7 @@ from analytics import (
     create_priority_score_distribution,
     create_theme_sentiment_heatmap,
     create_avg_churn_by_theme,
-    create_top_customers_table,
-    # Live pipeline specific analytics
-    create_risk_value_quadrant,
-    create_theme_impact_analysis,
-    create_sentiment_severity_analysis,
-    create_action_urgency_matrix,
-    create_cltv_at_risk_by_theme,
-    create_risk_concentration_analysis
+    create_top_customers_table
 )
 from live_pipeline import run_live_pipeline
 
@@ -700,35 +693,18 @@ def render_live_pipeline():
             st.metric("Avg Churn Prob", f"{avg_prob:.1%}")
         
         # Show top customers
-        st.subheader("Top Priority Customers")
+        st.subheader("Prioritized Customer List")
+        st.markdown("""
+        The pipeline has processed all reviews and created a prioritized list. Customers are sorted by Priority Score 
+        (Churn Probability × CLTV), ensuring the most valuable at-risk customers are addressed first.
+        """)
         top_customers = create_top_customers_table(df_results, n=20)
         st.dataframe(top_customers, use_container_width=True, hide_index=True)
         
-        # In-depth Analytics (different from demo)
-        st.subheader("In-Depth Analytics")
-        st.markdown("""
-        **Strategic Insights:** These analytics provide deeper business intelligence for decision-making.
+        st.info("""
+        **Note:** For detailed analytics and visualizations of these results, visit the **Analytics Dashboard** page in the sidebar.
+        The Live Pipeline page focuses on demonstrating the technical process (ML + LLM integration) rather than business analysis.
         """)
-        
-        # Row 1: Risk-Value Quadrant and Action Urgency
-        col1, col2 = st.columns(2)
-        with col1:
-            st.plotly_chart(create_risk_value_quadrant(df_results), use_container_width=True)
-        with col2:
-            st.plotly_chart(create_action_urgency_matrix(df_results), use_container_width=True)
-        
-        # Row 2: Theme Impact Analysis (4-panel)
-        st.plotly_chart(create_theme_impact_analysis(df_results), use_container_width=True)
-        
-        # Row 3: CLTV at Risk and Sentiment Severity
-        col1, col2 = st.columns(2)
-        with col1:
-            st.plotly_chart(create_cltv_at_risk_by_theme(df_results), use_container_width=True)
-        with col2:
-            st.plotly_chart(create_sentiment_severity_analysis(df_results), use_container_width=True)
-        
-        # Row 4: Risk Concentration
-        st.plotly_chart(create_risk_concentration_analysis(df_results), use_container_width=True)
         
         # Download results
         st.markdown("---")
