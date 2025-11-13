@@ -5,6 +5,7 @@ A hybrid approach showcasing the end-to-end pipeline with analytics
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import os
 from pathlib import Path
 
 # Import utility functions
@@ -19,6 +20,7 @@ from analytics import (
     create_avg_churn_by_theme,
     create_top_customers_table
 )
+from live_pipeline import run_live_pipeline
 
 # Page configuration
 st.set_page_config(
@@ -586,6 +588,110 @@ def render_analytics_dashboard(df):
         st.plotly_chart(create_avg_churn_by_theme(filtered_df), use_container_width=True)
 
 
+def render_live_pipeline():
+    """Render the live pipeline execution page"""
+    st.header("Live Pipeline Execution")
+    
+    # Check environment variables
+    ml_api_url = os.environ.get("ML_API_URL")
+    google_api_key = os.environ.get("GOOGLE_API_KEY")
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        if ml_api_url:
+            st.success(f"ML API URL: {ml_api_url}")
+        else:
+            st.error("ML_API_URL not set. Add it to Streamlit Cloud secrets.")
+    
+    with col2:
+        if google_api_key:
+            st.success("Google API Key: Configured")
+        else:
+            st.error("GOOGLE_API_KEY not set. Add it to Streamlit Cloud secrets.")
+    
+    if not ml_api_url or not google_api_key:
+        st.warning("""
+        **Setup Required:**
+        
+        To run the live pipeline, you need to set these environment variables in Streamlit Cloud:
+        1. Go to your app settings → Secrets
+        2. Add `ML_API_URL` with your Render API URL (e.g., `https://churn-api-xxxx.onrender.com`)
+        3. Add `GOOGLE_API_KEY` with your Google Gemini API key
+        
+        See `DEPLOYMENT.md` for detailed instructions.
+        """)
+        return
+    
+    st.markdown("---")
+    
+    # Pipeline controls
+    st.subheader("Run Pipeline")
+    
+    col1, col2 = st.columns([2, 1])
+    with col1:
+        limit = st.number_input(
+            "Number of reviews to process (leave empty for all)",
+            min_value=1,
+            max_value=100,
+            value=10,
+            help="Limit the number of reviews for faster testing. Full pipeline processes all reviews."
+        )
+    
+    with col2:
+        st.markdown("<br>", unsafe_allow_html=True)
+        run_button = st.button("Run Live Pipeline", type="primary", use_container_width=True)
+    
+    if run_button:
+        with st.container():
+            st.markdown("### Processing Pipeline")
+            
+            # Run pipeline
+            df_results = run_live_pipeline(limit=limit if limit else None)
+            
+            if df_results is not None and len(df_results) > 0:
+                st.success(f"Pipeline completed! Processed {len(df_results)} customers.")
+                
+                # Show metrics
+                st.subheader("Results Summary")
+                col1, col2, col3, col4 = st.columns(4)
+                
+                with col1:
+                    st.metric("Total Processed", len(df_results))
+                with col2:
+                    high_risk = len(df_results[df_results['ML_Risk_Level'] == 'High'])
+                    st.metric("High Risk", high_risk)
+                with col3:
+                    total_cltv = df_results['CLTV'].sum()
+                    st.metric("Total CLTV at Risk", format_currency(total_cltv))
+                with col4:
+                    avg_prob = df_results['Churn_Probability'].mean()
+                    st.metric("Avg Churn Prob", f"{avg_prob:.1%}")
+                
+                # Show top customers
+                st.subheader("Top Priority Customers")
+                top_customers = create_top_customers_table(df_results, n=20)
+                st.dataframe(top_customers, use_container_width=True, hide_index=True)
+                
+                # Show charts
+                st.subheader("Analytics")
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.plotly_chart(create_risk_distribution_chart(df_results), use_container_width=True)
+                with col2:
+                    st.plotly_chart(create_theme_breakdown_chart(df_results), use_container_width=True)
+                
+                # Download results
+                csv = df_results.to_csv(index=False)
+                st.download_button(
+                    label="Download Results as CSV",
+                    data=csv,
+                    file_name=f"live_pipeline_results_{pd.Timestamp.now().strftime('%Y%m%d_%H%M%S')}.csv",
+                    mime="text/csv"
+                )
+            elif df_results is None:
+                st.error("Pipeline failed. Check the error messages above.")
+
+
 def render_technical_details():
     """Render technical details section"""
     with st.expander("**Technical Details**", expanded=False):
@@ -610,7 +716,7 @@ def render_technical_details():
         3. For each review:
            - Lookup customer in warehouse
            - Extract 19 features
-           - Call ML API (localhost:8000) for prediction
+           - Call ML API (deployed on Render) for prediction
            - Call Gemini API for text classification
            - Calculate Priority Score
         4. Sort by Priority Score
@@ -637,7 +743,7 @@ def main():
         st.sidebar.title("Navigation")
         page = st.sidebar.radio(
             "Go to:",
-            ["Overview", "Analytics Dashboard", "Interactive Demo"]
+            ["Overview", "Analytics Dashboard", "Interactive Demo", "Live Pipeline"]
         )
         
         # Render based on selection
@@ -655,12 +761,16 @@ def main():
             render_hero_section(metrics)
             render_interactive_demo(df)
         
+        elif page == "Live Pipeline":
+            render_hero_section(metrics)
+            render_live_pipeline()
+        
         # Footer
         st.markdown("---")
         st.markdown("""
         <div style='text-align: center; color: #666; padding: 1rem;'>
             <p>Proactive Retention Agent | Built with Streamlit</p>
-            <p><small>Demo Mode - Using pre-computed results</small></p>
+            <p><small>Demo Mode - Using pre-computed results | Live Pipeline available in navigation</small></p>
         </div>
         """, unsafe_allow_html=True)
     
