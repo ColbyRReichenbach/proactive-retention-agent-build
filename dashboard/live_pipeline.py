@@ -11,17 +11,21 @@ import time
 
 
 def setup_gemini_client():
-    """Setup Gemini client from environment variable"""
+    """Setup Gemini clients with fallback models"""
     api_key = os.environ.get("GOOGLE_API_KEY")
     if not api_key:
-        return None
+        return None, None
     
     try:
         genai.configure(api_key=api_key)
-        return genai.GenerativeModel('gemini-2.0-flash-lite')
+        # Primary: 1.5 Flash (1500 requests/day) - higher quota
+        # Fallback: 2.0 Flash Lite (200 requests/day) - lower quota but backup
+        primary_model = genai.GenerativeModel('gemini-1.5-flash')
+        fallback_model = genai.GenerativeModel('gemini-2.0-flash-lite')
+        return primary_model, fallback_model
     except Exception as e:
         st.error(f"Error configuring Gemini: {e}")
-        return None
+        return None, None
 
 
 def get_ml_prediction(customer_id, features, ml_api_url):
@@ -43,14 +47,15 @@ def get_ml_prediction(customer_id, features, ml_api_url):
         return None
 
 
-def get_llm_analysis(gemini_model, review_text):
-    """Call Gemini API to classify review - returns detailed response"""
-    if gemini_model is None:
+def get_llm_analysis(primary_model, fallback_model, review_text, max_retries=3):
+    """Call Gemini API to classify review - with automatic fallback on rate limits"""
+    if primary_model is None:
         return {
             "theme": "Error", 
             "sentiment": "Error",
             "raw_response": "Model not configured",
-            "prompt": ""
+            "prompt": "",
+            "model_used": "None"
         }
     
     prompt = f"""
@@ -65,34 +70,87 @@ def get_llm_analysis(gemini_model, review_text):
     {{"theme": "Price", "sentiment": "Negative"}}
     """
     
-    try:
-        response = gemini_model.generate_content(prompt)
-        raw_response = response.text.strip()
-        
-        # Try to extract JSON from response
-        json_output = raw_response.replace("```json", "").replace("```", "").strip()
-        
-        # Try to parse JSON
-        try:
-            parsed = pd.read_json(json_output, typ='series').to_dict()
-        except:
-            # If JSON parsing fails, try to extract theme and sentiment from text
-            parsed = {"theme": "Parse Error", "sentiment": "Parse Error"}
-        
-        return {
-            "theme": parsed.get('theme', 'N/A'),
-            "sentiment": parsed.get('sentiment', 'N/A'),
-            "raw_response": raw_response,
-            "prompt": prompt
-        }
-    except Exception as e:
-        st.warning(f"LLM analysis failed: {e}")
-        return {
-            "theme": "LLM Error", 
-            "sentiment": "Error",
-            "raw_response": str(e),
-            "prompt": prompt
-        }
+    # Try primary model first, then fallback
+    models_to_try = [
+        (primary_model, "gemini-1.5-flash"),
+    ]
+    if fallback_model:
+        models_to_try.append((fallback_model, "gemini-2.0-flash-lite"))
+    
+    for model, model_name in models_to_try:
+        if model is None:
+            continue
+            
+        for attempt in range(max_retries):
+            try:
+                response = model.generate_content(prompt)
+                raw_response = response.text.strip()
+                
+                # Try to extract JSON from response
+                json_output = raw_response.replace("```json", "").replace("```", "").strip()
+                
+                # Try to parse JSON
+                try:
+                    parsed = pd.read_json(json_output, typ='series').to_dict()
+                except:
+                    parsed = {"theme": "Parse Error", "sentiment": "Parse Error"}
+                
+                return {
+                    "theme": parsed.get('theme', 'N/A'),
+                    "sentiment": parsed.get('sentiment', 'N/A'),
+                    "raw_response": raw_response,
+                    "prompt": prompt,
+                    "model_used": model_name
+                }
+            except Exception as e:
+                error_str = str(e)
+                
+                # Check for rate limit error (429)
+                if "429" in error_str or "Resource exhausted" in error_str or "rate limit" in error_str.lower():
+                    if attempt < max_retries - 1:
+                        # Exponential backoff: wait 2^attempt seconds
+                        wait_time = 2 ** (attempt + 1)
+                        st.warning(f"Rate limit on {model_name}. Waiting {wait_time} seconds before retry {attempt + 2}/{max_retries}...")
+                        time.sleep(wait_time)
+                        continue
+                    else:
+                        # Rate limit exceeded on this model, try fallback
+                        if model_name != models_to_try[-1][1]:  # Not the last model
+                            st.info(f"Rate limit exceeded on {model_name}. Falling back to {models_to_try[-1][1]}...")
+                            break  # Break out of retry loop, try next model
+                        else:
+                            # Last model also failed
+                            st.error("Rate limit exceeded on all models. Please wait a few minutes and try again, or reduce the number of reviews.")
+                            return {
+                                "theme": "Rate Limited", 
+                                "sentiment": "N/A",
+                                "raw_response": f"Rate limit error on all models: {error_str}",
+                                "prompt": prompt,
+                                "model_used": "None"
+                            }
+                else:
+                    # Other errors - don't retry, try fallback if available
+                    if model_name != models_to_try[-1][1]:
+                        st.warning(f"Error with {model_name}: {e}. Trying fallback model...")
+                        break
+                    else:
+                        st.warning(f"LLM analysis failed: {e}")
+                        return {
+                            "theme": "LLM Error", 
+                            "sentiment": "Error",
+                            "raw_response": str(e),
+                            "prompt": prompt,
+                            "model_used": model_name
+                        }
+    
+    # Should not reach here
+    return {
+        "theme": "Error", 
+        "sentiment": "Error",
+        "raw_response": "Failed after all attempts",
+        "prompt": prompt,
+        "model_used": "None"
+    }
 
 
 def load_data_sources():
@@ -137,8 +195,8 @@ def run_live_pipeline(limit=None):
     
     # Setup
     st.info(f"Connecting to ML API at: {ml_api_url}")
-    gemini_model = setup_gemini_client()
-    if gemini_model is None:
+    primary_model, fallback_model = setup_gemini_client()
+    if primary_model is None:
         return None
     
     # Load data
@@ -202,7 +260,7 @@ def run_live_pipeline(limit=None):
         
         # Call LLM API with visual feedback
         with st.spinner(f"Analyzing review {idx + 1} with LLM..."):
-            llm_result = get_llm_analysis(gemini_model, review_text)
+            llm_result = get_llm_analysis(primary_model, fallback_model, review_text)
         
         # Store detailed analysis for display
         llm_analysis_item = {
@@ -214,7 +272,8 @@ def run_live_pipeline(limit=None):
             "churn_prob": ml_result['churn_probability'],
             "ml_features": features_for_api,  # Store features sent to ML API
             "llm_prompt": llm_result.get('prompt', ''),
-            "llm_raw_response": llm_result.get('raw_response', '')
+            "llm_raw_response": llm_result.get('raw_response', ''),
+            "model_used": llm_result.get('model_used', 'N/A')
         }
         llm_analyses.append(llm_analysis_item)
         
@@ -255,6 +314,8 @@ def run_live_pipeline(limit=None):
                         
                         st.markdown(f"**Theme:** <span style='color: {theme_color}; font-weight: 600;'>{analysis['theme']}</span>", unsafe_allow_html=True)
                         st.markdown(f"**Sentiment:** <span style='color: {sentiment_color}; font-weight: 600;'>{analysis['sentiment']}</span>", unsafe_allow_html=True)
+                        if analysis.get('model_used'):
+                            st.caption(f"Model: {analysis['model_used']}")
                     
                     with col2:
                         st.markdown("**ML Prediction:**")
@@ -292,8 +353,8 @@ def run_live_pipeline(limit=None):
         }
         results.append(combined_data)
         
-        # Rate limiting for LLM API (adjust as needed)
-        time.sleep(1)  # Reduced from 6.1 for faster demo
+        # Rate limiting for LLM API - increased delay to avoid 429 errors
+        time.sleep(2)  # 2 second delay between API calls to respect rate limits
     
     progress_bar.empty()
     status_text.empty()

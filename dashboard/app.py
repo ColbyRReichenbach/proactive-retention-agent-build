@@ -839,11 +839,11 @@ def render_live_pipeline():
         if st.button("Test LLM Classification", type="primary", key="test_llm_button"):
             if google_api_key:
                 from live_pipeline import setup_gemini_client, get_llm_analysis
-                gemini_model = setup_gemini_client()
+                primary_model, fallback_model = setup_gemini_client()
                 
-                if gemini_model:
+                if primary_model:
                     with st.spinner("Analyzing review with LLM..."):
-                        result = get_llm_analysis(gemini_model, test_review)
+                        result = get_llm_analysis(primary_model, fallback_model, test_review)
                         
                         if result:
                             st.success("LLM Classification Complete!")
@@ -870,6 +870,8 @@ def render_live_pipeline():
                             
                             with col2:
                                 st.markdown("**Technical Details:**")
+                                if result.get('model_used'):
+                                    st.caption(f"Model Used: {result.get('model_used')}")
                                 with st.expander("View Prompt"):
                                     st.code(result.get('prompt', ''), language='text')
                                 with st.expander("View Raw Response"):
