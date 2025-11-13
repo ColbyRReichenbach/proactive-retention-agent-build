@@ -137,10 +137,19 @@ def run_live_pipeline(limit=None):
         'Streaming Movies', 'Contract', 'Paperless Billing', 'Payment Method'
     ]
     
-    # Processing loop with progress
+    # Processing loop with progress and real-time LLM feed
     results = []
     progress_bar = st.progress(0)
     status_text = st.empty()
+    
+    # Create container for real-time LLM analysis feed
+    st.markdown("### Real-Time LLM Analysis Feed")
+    llm_feed_container = st.container()
+    
+    with llm_feed_container:
+        # Create a placeholder that will be updated
+        feed_placeholder = st.empty()
+        llm_analyses = []  # Store analyses to display
     
     for idx, (_, review) in enumerate(df_reviews.iterrows()):
         customer_id = review['CustomerID']
@@ -165,8 +174,65 @@ def run_live_pipeline(limit=None):
         if ml_result is None:
             continue
         
-        # Call LLM API
-        llm_result = get_llm_analysis(gemini_model, review_text)
+        # Call LLM API with visual feedback
+        with st.spinner(f"Analyzing review {idx + 1} with LLM..."):
+            llm_result = get_llm_analysis(gemini_model, review_text)
+        
+        # Store LLM analysis for display
+        llm_analysis_item = {
+            "customer_id": customer_id,
+            "review_text": review_text,
+            "theme": llm_result.get('theme', 'N/A'),
+            "sentiment": llm_result.get('sentiment', 'N/A'),
+            "ml_risk": ml_result['risk_level'],
+            "churn_prob": ml_result['churn_probability']
+        }
+        llm_analyses.append(llm_analysis_item)
+        
+        # Update the feed in real-time
+        with feed_placeholder.container():
+            # Show most recent analyses (last 10)
+            display_count = min(10, len(llm_analyses))
+            recent_analyses = llm_analyses[-display_count:]
+            
+            st.markdown(f"**Showing {len(recent_analyses)} most recent analyses (newest first):**")
+            
+            for i, analysis in enumerate(reversed(recent_analyses)):  # Show newest first
+                with st.expander(
+                    f"Review {len(llm_analyses) - i} | Customer: {analysis['customer_id']} | Theme: {analysis['theme']} | Sentiment: {analysis['sentiment']}",
+                    expanded=(i == 0)  # Expand most recent only
+                ):
+                    # Review text section
+                    st.markdown("**Customer Review:**")
+                    st.info(analysis['review_text'])
+                    
+                    # Classification results
+                    col1, col2 = st.columns(2)
+                    with col1:
+                        st.markdown("**LLM Analysis:**")
+                        theme_color = {
+                            'Price': '#ff9800',
+                            'Product/Service': '#2196f3',
+                            'Customer Support': '#f44336',
+                            'Competitor': '#9c27b0',
+                            'Other': '#607d8b'
+                        }.get(analysis['theme'], '#666')
+                        
+                        sentiment_color = {
+                            'Negative': '#f44336',
+                            'Positive': '#4caf50',
+                            'Neutral': '#ff9800'
+                        }.get(analysis['sentiment'], '#666')
+                        
+                        st.markdown(f"**Theme:** <span style='color: {theme_color}; font-weight: 600;'>{analysis['theme']}</span>", unsafe_allow_html=True)
+                        st.markdown(f"**Sentiment:** <span style='color: {sentiment_color}; font-weight: 600;'>{analysis['sentiment']}</span>", unsafe_allow_html=True)
+                    
+                    with col2:
+                        st.markdown("**ML Prediction:**")
+                        st.metric("Risk Level", analysis['ml_risk'])
+                        st.metric("Churn Probability", f"{analysis['churn_prob']:.1%}")
+                    
+                    st.markdown("---")
         
         # Combine results
         combined_data = {
