@@ -66,21 +66,30 @@ def load_data_warehouse(path_to_telco_csv):
 # Define api caller fxns
 def get_ml_prediction(customer_id, features):
    """
-   Calls the locally running Docker API to get a churn prediction.
+   Calls the ML API (local or deployed) to get a churn prediction.
+   Uses ML_API_URL environment variable if set, otherwise defaults to localhost.
    """
-   url = f"http://localhost:8000/predict?customer_id={customer_id}"
+   # Get ML API URL from environment variable, default to localhost for local development
+   ml_api_url = os.environ.get("ML_API_URL", "http://localhost:8000")
+   url = f"{ml_api_url}/predict?customer_id={customer_id}"
 
    # The API expects two parts: a customer_id and a 'features' JSON object
    payload = features
 
    try:
-       response = requests.post(url, json=payload)
+       response = requests.post(url, json=payload, timeout=30)
        response.raise_for_status()  # Raises an error for 4xx/5xx responses
        return response.json()
 
    except requests.exceptions.ConnectionError:
        print(f"\nERROR: Could not connect to ML API at {url}.")
-       print("Is the Docker container running? `docker run -d -p 8000:8000 ...`")
+       if ml_api_url == "http://localhost:8000":
+           print("Is the Docker container running? `docker run -d -p 8000:8000 ...`")
+       else:
+           print(f"Check that the ML API is deployed and accessible at {ml_api_url}")
+       return None
+   except requests.exceptions.Timeout:
+       print(f"\nERROR: ML API request timed out for {customer_id}.")
        return None
    except Exception as e:
        print(f"\nERROR: ML API call failed for {customer_id}: {e}")

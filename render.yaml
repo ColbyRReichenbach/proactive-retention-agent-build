@@ -1,0 +1,17 @@
+# Render Blueprint for ML API Deployment
+# This file configures the ML Model API service on Render
+
+services:
+  - type: web
+    name: churn-ml-api
+    env: docker
+    region: oregon  # Change to your preferred region
+    plan: free  # Free tier
+    dockerfilePath: ./ml_model_api/Dockerfile
+    dockerContext: ./ml_model_api
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10
+    healthCheckPath: /
+    autoDeploy: true
+

@@ -22,6 +22,27 @@ A key part of this project was tuning the ML model. A baseline model had poor Re
 The final model was tuned using `scale_pos_weight` to prioritize **high Recall**. We strategically accepted more False Positives (a small cost) to minimize False Negatives (a high cost).
 
 ## How to Run This Project
+
+### Option 1: Interactive Dashboard (Recommended for Demo)
+
+The easiest way to explore this project is through the interactive Streamlit dashboard:
+
+```bash
+cd dashboard
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+The dashboard includes:
+- **Demo Mode**: Pre-computed results (no Docker or API keys needed)
+- **Analytics Dashboard**: Comprehensive BI visualizations
+- **Interactive Demo**: Follow individual customers through the pipeline
+- **Step-by-Step Walkthrough**: Learn how the system works
+
+See `dashboard/README.md` for more details.
+
+### Option 2: Full Pipeline (Local Development)
+
 1.  **Clone the repo:** `git clone ...`
 2.  **Set up API key:** Create a `.env` file in the root with your `GOOGLE_API_KEY`.
 3.  **Build & Run the ML API:**
@@ -36,4 +57,25 @@ The final model was tuned using `scale_pos_weight` to prioritize **high Recall**
     pip install -r requirements.txt
     python main.py
     ```
-5.  **View the results:** The output is saved to `pipeline/analyst_priority_list_FINAL.csv`.
+5.  **View the results:** The output is saved to `pipeline/analyst_priority_list.csv`.
+
+### Option 3: Deploy to Production
+
+Deploy the full system to the cloud for a live technical demo:
+
+- **ML API**: Deploy to Render (free tier)
+- **Dashboard**: Deploy to Streamlit Cloud (free)
+
+See `DEPLOYMENT.md` for detailed deployment instructions.
+
+## Project Structure
+
+```
+proactive-retention-agent/
+├── dashboard/              # Streamlit interactive dashboard
+├── ml_model_api/          # FastAPI service (Docker)
+├── pipeline/              # Main processing pipeline
+├── notebooks/             # Data exploration & model training
+├── data/                 # Source data files
+└── DEPLOYMENT.md         # Deployment guide
+```
