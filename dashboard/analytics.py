@@ -44,7 +44,19 @@ def create_theme_breakdown_chart(df):
     fig.update_layout(
         height=350,
         plot_bgcolor='#f5f5f5',
-        paper_bgcolor='#f5f5f5'
+        paper_bgcolor='#f5f5f5',
+        legend=dict(
+            orientation="v",
+            yanchor="middle",
+            y=0.5,
+            xanchor="right",
+            x=0.95,
+            bgcolor="rgba(255,255,255,0.95)",
+            bordercolor="rgba(0,0,0,0.3)",
+            borderwidth=1,
+            font=dict(size=10)
+        ),
+        margin=dict(l=50, r=50, t=50, b=50)
     )
     return fig
 
@@ -154,7 +166,14 @@ def create_theme_sentiment_heatmap(df):
         height=400,
         plot_bgcolor='#f5f5f5',
         paper_bgcolor='#f5f5f5',
-        margin=dict(b=80)  # Extra bottom margin for x-axis labels
+        coloraxis_colorbar=dict(
+            x=1.02,
+            xanchor="left",
+            len=0.8,
+            yanchor="middle",
+            y=0.5
+        ),
+        margin=dict(l=50, r=100, t=50, b=80)  # Extra right margin for colorbar
     )
     return fig
 
@@ -172,10 +191,19 @@ def create_avg_churn_by_theme(df):
         color_continuous_scale='Reds'
     )
     fig.update_layout(
-        showlegend=False, 
+        showlegend=False,
         height=350,
         plot_bgcolor='#f5f5f5',
-        paper_bgcolor='#f5f5f5'
+        paper_bgcolor='#f5f5f5',
+        coloraxis_colorbar=dict(
+            x=1.02,
+            xanchor="left",
+            len=0.8,
+            yanchor="middle",
+            y=0.5,
+            title="Churn<br>Probability"
+        ),
+        margin=dict(l=50, r=100, t=50, b=50)  # Extra right margin for colorbar
     )
     return fig
 
