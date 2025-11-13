@@ -94,16 +94,17 @@ def create_cltv_vs_churn_scatter(df):
         plot_bgcolor='#f5f5f5',
         paper_bgcolor='#f5f5f5',
         legend=dict(
-            orientation="h",
-            yanchor="bottom",
-            y=-0.25,
-            xanchor="center",
-            x=0.5,
-            bgcolor="rgba(255,255,255,0.9)",
-            bordercolor="rgba(0,0,0,0.2)",
-            borderwidth=1
+            orientation="v",
+            yanchor="top",
+            y=0.98,
+            xanchor="right",
+            x=0.98,
+            bgcolor="rgba(255,255,255,0.95)",
+            bordercolor="rgba(0,0,0,0.3)",
+            borderwidth=1,
+            font=dict(size=10)
         ),
-        margin=dict(b=80, t=50)  # Extra bottom margin for horizontal legend
+        margin=dict(l=50, r=50, t=50, b=50)
     )
     return fig
 
@@ -124,16 +125,17 @@ def create_priority_score_distribution(df):
         plot_bgcolor='#f5f5f5',
         paper_bgcolor='#f5f5f5',
         legend=dict(
-            orientation="h",
-            yanchor="bottom",
-            y=-0.25,
-            xanchor="center",
-            x=0.5,
-            bgcolor="rgba(255,255,255,0.9)",
-            bordercolor="rgba(0,0,0,0.2)",
-            borderwidth=1
+            orientation="v",
+            yanchor="top",
+            y=0.98,
+            xanchor="right",
+            x=0.98,
+            bgcolor="rgba(255,255,255,0.95)",
+            bordercolor="rgba(0,0,0,0.3)",
+            borderwidth=1,
+            font=dict(size=10)
         ),
-        margin=dict(b=80, t=50)  # Extra bottom margin for horizontal legend
+        margin=dict(l=50, r=50, t=50, b=50)
     )
     return fig
 
@@ -236,16 +238,17 @@ def create_risk_value_quadrant(df):
         plot_bgcolor='#f5f5f5',
         paper_bgcolor='#f5f5f5',
         legend=dict(
-            orientation="h",
-            yanchor="bottom",
-            y=-0.25,
-            xanchor="center",
-            x=0.5,
-            bgcolor="rgba(255,255,255,0.9)",
-            bordercolor="rgba(0,0,0,0.2)",
-            borderwidth=1
+            orientation="v",
+            yanchor="top",
+            y=0.98,
+            xanchor="right",
+            x=0.98,
+            bgcolor="rgba(255,255,255,0.95)",
+            bordercolor="rgba(0,0,0,0.3)",
+            borderwidth=1,
+            font=dict(size=10)
         ),
-        margin=dict(b=80, t=50)  # Extra bottom margin for horizontal legend
+        margin=dict(l=50, r=50, t=50, b=50)
     )
     return fig
 
@@ -349,15 +352,16 @@ def create_sentiment_severity_analysis(df):
         paper_bgcolor='#f5f5f5',
         legend=dict(
             orientation="h",
-            yanchor="bottom",
-            y=-0.25,
-            xanchor="center",
-            x=0.5,
-            bgcolor="rgba(255,255,255,0.9)",
-            bordercolor="rgba(0,0,0,0.2)",
-            borderwidth=1
+            yanchor="top",
+            y=0.98,
+            xanchor="right",
+            x=0.98,
+            bgcolor="rgba(255,255,255,0.95)",
+            bordercolor="rgba(0,0,0,0.3)",
+            borderwidth=1,
+            font=dict(size=10)
         ),
-        margin=dict(b=80, t=50)  # Extra bottom margin for horizontal legend
+        margin=dict(l=50, r=50, t=50, b=50)
     )
     return fig
 
@@ -480,16 +484,17 @@ def create_risk_concentration_analysis(df):
         plot_bgcolor='#f5f5f5',
         paper_bgcolor='#f5f5f5',
         legend=dict(
-            orientation="h",
-            yanchor="bottom",
-            y=-0.25,
-            xanchor="center",
-            x=0.5,
-            bgcolor="rgba(255,255,255,0.9)",
-            bordercolor="rgba(0,0,0,0.2)",
-            borderwidth=1
+            orientation="v",
+            yanchor="top",
+            y=0.98,
+            xanchor="right",
+            x=0.98,
+            bgcolor="rgba(255,255,255,0.95)",
+            bordercolor="rgba(0,0,0,0.3)",
+            borderwidth=1,
+            font=dict(size=10)
         ),
-        margin=dict(b=80, t=50)  # Extra bottom margin for horizontal legend
+        margin=dict(l=50, r=50, t=50, b=50)
     )
     return fig
 
